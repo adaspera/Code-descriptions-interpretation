@@ -1,0 +1,1693 @@
+{
+  "model": "Qwen/Qwen3-1.7B",
+  "start_time": "2025-05-13T18:35:21.181464",
+  "tasks": [
+    {
+      "task_id": "HumanEval/0",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    for i in range(len(numbers) - 1):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[j] - numbers[i]) < threshold:\n                return True\n    return False\n```",
+          "extracted_code": "def has_close_elements(numbers: List[float], threshold: float) -> bool:\n    for i in range(len(numbers) - 1):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[j] - numbers[i]) < threshold:\n                return True\n    return False",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/1",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "critical",
+          "extracted_code": "critical",
+          "errors": "critical"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/2",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def truncate_number(number: float) -> float:\n    return number - int(number)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/3",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List\n\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/4",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List\n\n\ndef mean_absolute_deviation(numbers: List[float]) -> float:\n    mean = sum(numbers) / len(numbers)\n    return sum(abs(num - mean) for num in numbers) / len(numbers)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/5",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    result = []\n    for num in numbers:\n        result.append(num)\n        if result and result[-1] != delimeter:\n            result.append(delimeter)\n    return result\n```",
+          "extracted_code": "def intersperse(numbers: List[int], delimeter: int) -> List[int]:\n    result = []\n    for num in numbers:\n        result.append(num)\n        if result and result[-1] != delimeter:\n            result.append(delimeter)\n    return result",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/6",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List\n\n\ndef parse_nested_parens(paren_string: str) -> List[int]:\n    groups = paren_string.split()\n    result = []\n    for group in groups:\n        depth = 0\n        max_depth = 0\n        for char in group:\n            if char == '(':\n                depth += 1\n                if depth > max_depth:\n                    max_depth = depth\n            elif char == ')':\n                depth -= 1\n        result.append(max_depth)\n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/7",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    return [s for s in strings if substring in s]\n```",
+          "extracted_code": "def filter_by_substring(strings: List[str], substring: str) -> List[str]:\n    return [s for s in strings if substring in s]",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/8",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List, Tuple\n\n\ndef sum_product(numbers: List[int]) -> Tuple[int, int]:\n    total = 0\n    product = 1\n    for num in numbers:\n        total += num\n        product *= num\n    return (total, product)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/9",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List, Tuple\n\n\ndef rolling_max(numbers: List[int]) -> List[int]:\n    if not numbers:\n        return []\n    \n    max_so_far = numbers[0]\n    result = [max_so_far]\n    \n    for i in range(1, len(numbers)):\n        if numbers[i] > max_so_far:\n            max_so_far = numbers[i]\n        result.append(max_so_far)\n    \n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/10",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    n = len(string)\n    for i in range(n, 0, -1):\n        if is_palindrome(string[:i]):\n            return string + string[:n - i][::-1]\n    return string\n```",
+          "extracted_code": "def is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n    n = len(string)\n    for i in range(n, 0, -1):\n        if is_palindrome(string[:i]):\n            return string + string[:n - i][::-1]\n    return string",
+          "errors": "Base input test failures:\nInput: ['']\nError: name 'is_palindrome' is not defined\n\nInput: ['x']\nError: name 'is_palindrome' is not defined\n\nInput: ['xyz']\nError: name 'is_palindrome' is not defined\n\nInput: ['xyx']\nError: name 'is_palindrome' is not defined\n\nInput: ['jerry']\nError: name 'is_palindrome' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/11",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def string_xor(a: str, b: str) -> str:\n    result = []\n    for i in range(len(a)):\n        if a[i] == b[i]:\n            result.append('0')\n        else:\n            result.append('1')\n    return ''.join(result)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/12",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List, Optional\n\n\ndef longest(strings: List[str]) -> Optional[str]:\n    if not strings:\n        return None\n    max_length = len(strings[0])\n    max_string = strings[0]\n    for s in strings:\n        if len(s) > max_length:\n            max_length = len(s)\n            max_string = s\n    return max_string",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/13",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def greatest_common_divisor(a: int, b: int) -> int:\n    while b:\n        a, b = b, a % b\n    return a",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/14",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef all_prefixes(string: str) -> List[str]:\n    return [string[:i] for i in range(1, len(string) + 1)]\n```",
+          "extracted_code": "def all_prefixes(string: str) -> List[str]:\n    return [string[:i] for i in range(1, len(string) + 1)]",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/15",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def string_sequence(n: int) -> str:\n    return ' '.join(str(i) for i in range(n + 1))",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/16",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def count_distinct_characters(string: str) -> int:\n    return len(set(string.lower()))",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/17",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef parse_music(music_string: str) -> List[int]:\n    notes = ['o', 'o|', '.|']\n    result = []\n    i = 0\n    while i < len(music_string):\n        if music_string[i] == 'o':\n            result.append(4)\n            i += 1\n        elif music_string[i] == 'o' and i + 1 < len(music_string) and music_string[i+1] == '|':\n            result.append(2)\n            i += 2\n        elif music_string[i] == '.' and i + 1 < len(music_string) and music_string[i+1] == '|':\n            result.append(1)\n            i += 2\n        else:\n            i += 1\n    return result\n```",
+          "extracted_code": "def parse_music(music_string: str) -> List[int]:\n    notes = ['o', 'o|', '.|']\n    result = []\n    i = 0\n    while i < len(music_string):\n        if music_string[i] == 'o':\n            result.append(4)\n            i += 1\n        elif music_string[i] == 'o' and i + 1 < len(music_string) and music_string[i+1] == '|':\n            result.append(2)\n            i += 2\n        elif music_string[i] == '.' and i + 1 < len(music_string) and music_string[i+1] == '|':\n            result.append(1)\n            i += 2\n        else:\n            i += 1\n    return result",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/18",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def how_many_times(string: str, substring: str) -> int:\n    count = 0\n    start = 0\n    while start <= len(string) - len(substring):\n        if string[start:start + len(substring)] == substring:\n            count += 1\n            start += 1\n        else:\n            start += 1\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/19",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def sort_numbers(numbers: str) -> str:\n    number_to_word = {\n        'zero': 0,\n        'one': 1,\n        'two': 2,\n        'three': 3,\n        'four': 4,\n        'five': 5,\n        'six': 6,\n        'seven': 7,\n        'eight': 8,\n        'nine': 9\n    }\n    words = numbers.split()\n    words.sort(key=lambda x: number_to_word[x])\n    return ' '.join(words)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/20",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\nfrom typing import List, Tuple\n\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    \"\"\" From a supplied list of numbers (of length at least two) select and return two that are the closest to each\n    other and return them in order (smaller number, larger number).\n    \"\"\"\n    if len(numbers) < 2:\n        raise ValueError(\"List must have at least two elements\")\n    \n    # Find the index of the element with the smallest absolute difference\n    min_diff = float('inf')\n    closest_indices = []\n    \n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            diff = abs(numbers[i] - numbers[j])\n            if diff < min_diff:\n                min_diff = diff\n                closest_indices = [i, j]\n            elif diff == min_diff:\n                # If same difference, choose the one with smaller value\n                if numbers[i] < numbers[j]:\n                    closest_indices = [i, j]\n    \n    return (numbers[closest_indices[0]], numbers[closest_indices[1]])\n```",
+          "extracted_code": "from typing import List, Tuple\n\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    \"\"\" From a supplied list of numbers (of length at least two) select and return two that are the closest to each\n    other and return them in order (smaller number, larger number).\n    \"\"\"\n    if len(numbers) < 2:\n        raise ValueError(\"List must have at least two elements\")\n    \n    # Find the index of the element with the smallest absolute difference\n    min_diff = float('inf')\n    closest_indices = []\n    \n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            diff = abs(numbers[i] - numbers[j])\n            if diff < min_diff:\n                min_diff = diff\n                closest_indices = [i, j]\n            elif diff == min_diff:\n                # If same difference, choose the one with smaller value\n                if numbers[i] < numbers[j]:\n                    closest_indices = [i, j]\n    \n    return (numbers[closest_indices[0]], numbers[closest_indices[1]])",
+          "errors": "Base input test failures:\nInput: [[1.0, 2.0, 4.0, 5.0, 5.9]]\nExpected: (5.0, 5.9)\nGot: (5.9, 5.0)"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/21",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef rescale_to_unit(numbers: List[float]) -> List[float]:\n    min_val = min(numbers)\n    max_val = max(numbers)\n    return [(x - min_val) / (max_val - min_val) for x in numbers]\n```",
+          "extracted_code": "def rescale_to_unit(numbers: List[float]) -> List[float]:\n    min_val = min(numbers)\n    max_val = max(numbers)\n    return [(x - min_val) / (max_val - min_val) for x in numbers]",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/22",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef filter_integers(values: List[Any]) -> List[int]:\n    return [val for val in values if isinstance(val, int)]\n```",
+          "extracted_code": "def filter_integers(values: List[Any]) -> List[int]:\n    return [val for val in values if isinstance(val, int)]",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/23",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def strlen(string: str) -> int:\n    return len(string)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/24",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef largest_divisor(n: int) -> int:\n    \"\"\" For a given number n, find the largest number that divides n evenly, smaller than n\n    >>> largest_divisor(15)\n    5\n    \"\"\"\n    return n // 2\n```",
+          "extracted_code": "def largest_divisor(n: int) -> int:\n    \"\"\" For a given number n, find the largest number that divides n evenly, smaller than n\n    >>> largest_divisor(15)\n    5\n    \"\"\"\n    return n // 2",
+          "errors": "Base input test failures:\nInput: [7]\nExpected: 1\nGot: 3\n\nInput: [49]\nExpected: 7\nGot: 24"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/25",
+      "success": true,
+      "attempts": 0,
+      "final_code": "from typing import List\n\n\ndef factorize(n: int) -> List[int]:\n    factors = []\n    i = 2\n    while i * i <= n:\n        while n % i == 0:\n            factors.append(i)\n            n //= i\n        i += 1\n    if n > 1:\n        factors.append(n)\n    return factors",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/26",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef remove_duplicates(numbers: List[int]) -> List[int]:\n    seen = set()\n    result = []\n    for num in numbers:\n        if num not in seen:\n            seen.add(num)\n            result.append(num)\n    return result\n```",
+          "extracted_code": "def remove_duplicates(numbers: List[int]) -> List[int]:\n    seen = set()\n    result = []\n    for num in numbers:\n        if num not in seen:\n            seen.add(num)\n            result.append(num)\n    return result",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/27",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def flip_case(string: str) -> str:\n    return string.swapcase()",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/28",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef concatenate(strings: List[str]) -> str:\n    return ''.join(strings)\n```",
+          "extracted_code": "def concatenate(strings: List[str]) -> str:\n    return ''.join(strings)",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/29",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef filter_by_prefix(strings: List[str], prefix: str) -> List[str]:\n    return [s for s in strings if s.startswith(prefix)]\n```",
+          "extracted_code": "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]:\n    return [s for s in strings if s.startswith(prefix)]",
+          "errors": "Error during testing: name 'List' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/30",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def get_positive(l: list):\n    return [x for x in l if x > 0]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/31",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def is_prime(n):\n    \"\"\"Return true if a given number is prime, and false otherwise.\n    >>> is_prime(6)\n    False\n    >>> is_prime(101)\n    True\n    >>> is_prime(11)\n    True\n    >>> is_prime(13441)\n    True\n    >>> is_prime(61)\n    True\n    >>> is_prime(4)\n    False\n    >>> is_prime(1)\n    False\n    \"\"\"\n    if n < 2:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    for i in range(3, int(n**0.5) + 1, 2):\n        if n % i == 0:\n            return False\n    return True",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/32",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\nimport math\n\n\ndef poly(xs: list, x: float):\n    \"\"\"\n    Evaluates polynomial with coefficients xs at point x.\n    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n\n    \"\"\"\n    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])\n\n\ndef find_zero(xs: list):\n    \"\"\" xs are coefficients of a polynomial.\n    find_zero find x such that poly(x) = 0.\n    find_zero returns only only zero point, even if there are many.\n    Moreover, find_zero only takes list xs having even number of coefficients\n    and largest non zero coefficient as it guarantees\n    a solution.\n    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x\n    -0.5\n    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3\n    1.0\n    \"\"\"\n    n = len(xs)\n    if n % 2 != 0:\n        raise ValueError(\"xs must have even number of coefficients\")\n    if n == 0:\n        return 0.0\n    # Find the zero point using the given condition\n    # This is a placeholder for the actual implementation\n    # For the purpose of this example, we return the root of the polynomial\n    # which is the solution to the equation xs[0] + xs[1] * x + ... + xs[n] * x^n = 0\n    # This is a simplified version and may not work for all cases\n    return -xs[0] / xs[1] if n == 2 else 0.0\n```",
+          "extracted_code": "import math\n\n\ndef poly(xs: list, x: float):\n    \"\"\"\n    Evaluates polynomial with coefficients xs at point x.\n    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n\n    \"\"\"\n    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])\n\n\ndef find_zero(xs: list):\n    \"\"\" xs are coefficients of a polynomial.\n    find_zero find x such that poly(x) = 0.\n    find_zero returns only only zero point, even if there are many.\n    Moreover, find_zero only takes list xs having even number of coefficients\n    and largest non zero coefficient as it guarantees\n    a solution.\n    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x\n    -0.5\n    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3\n    1.0\n    \"\"\"\n    n = len(xs)\n    if n % 2 != 0:\n        raise ValueError(\"xs must have even number of coefficients\")\n    if n == 0:\n        return 0.0\n    # Find the zero point using the given condition\n    # This is a placeholder for the actual implementation\n    # For the purpose of this example, we return the root of the polynomial\n    # which is the solution to the equation xs[0] + xs[1] * x + ... + xs[n] * x^n = 0\n    # This is a simplified version and may not work for all cases\n    return -xs[0] / xs[1] if n == 2 else 0.0",
+          "errors": "Base input test failures:\nInput: [[-10, -2]]\nError: name 'poly' is not defined\n\nInput: [[-3, -6, -7, 7]]\nError: name 'poly' is not defined\n\nInput: [[8, 3]]\nError: name 'poly' is not defined\n\nInput: [[-10, -8]]\nError: name 'poly' is not defined\n\nInput: [[-3, 6, 9, -10]]\nError: name 'poly' is not defined\n\nInput: [[10, 7, 3, -3]]\nError: name 'poly' is not defined\n\nInput: [[8, -2, -10, -5, 3, 1, -2, -6]]\nError: name 'poly' is not defined\n\nInput: [[1, -7, -8, 2]]\nError: name 'poly' is not defined\n\nInput: [[1, 1]]\nError: name 'poly' is not defined\n\nInput: [[-9, 4, 7, -7, 2, -8]]\nError: name 'poly' is not defined\n\nInput: [[10, 9, 1, 8, -4, -8]]\nError: name 'poly' is not defined\n\nInput: [[-3, -1]]\nError: name 'poly' is not defined\n\nInput: [[-3, -7]]\nError: name 'poly' is not defined\n\nInput: [[-2, 4, 10, 1, -5, 1, 1, -4]]\nError: name 'poly' is not defined\n\nInput: [[10, -8, 9, 10, -5, 7]]\nError: name 'poly' is not defined\n\nInput: [[-5, 4, 2, -2]]\nError: name 'poly' is not defined\n\nInput: [[1, -9, -3, -9]]\nError: name 'poly' is not defined\n\nInput: [[2, -2, -8, -4, 8, 1]]\nError: name 'poly' is not defined\n\nInput: [[10, 5, 2, 10]]\nError: name 'poly' is not defined\n\nInput: [[-6, -2, -6, -3, 7, 7, -2, 8]]\nError: name 'poly' is not defined\n\nInput: [[8, 2, 1, -3, -6, 6, 5, -8]]\nError: name 'poly' is not defined\n\nInput: [[-7, -6]]\nError: name 'poly' is not defined\n\nInput: [[3, 9, -8, 2]]\nError: name 'poly' is not defined\n\nInput: [[9, 4, 6, -2, 7, -10, -7, 7]]\nError: name 'poly' is not defined\n\nInput: [[10, 1, -7, -1, 3, -5]]\nError: name 'poly' is not defined\n\nInput: [[-10, -2, 6, -5, 6, -7, 10, -1]]\nError: name 'poly' is not defined\n\nInput: [[-6, 1, -5, 7]]\nError: name 'poly' is not defined\n\nInput: [[9, 1]]\nError: name 'poly' is not defined\n\nInput: [[-10, -7, 1, -1, -3, -9, -3, 8]]\nError: name 'poly' is not defined\n\nInput: [[-8, 5]]\nError: name 'poly' is not defined\n\nInput: [[7, -6]]\nError: name 'poly' is not defined\n\nInput: [[5, 7, -5, -2]]\nError: name 'poly' is not defined\n\nInput: [[-4, 7, -4, -1, 2, 10, 1, 4]]\nError: name 'poly' is not defined\n\nInput: [[-7, -3, -3, -8, 1, -10, 8, 7]]\nError: name 'poly' is not defined\n\nInput: [[8, -3, -10, -8]]\nError: name 'poly' is not defined\n\nInput: [[-3, -8]]\nError: name 'poly' is not defined\n\nInput: [[1, -8]]\nError: name 'poly' is not defined\n\nInput: [[-2, 5, -4, 7]]\nError: name 'poly' is not defined\n\nInput: [[8, 8, 5, -3]]\nError: name 'poly' is not defined\n\nInput: [[3, -4, -7, -7, 3, 1, 3, 3]]\nError: name 'poly' is not defined\n\nInput: [[-9, 10, 10, -7, -9, 2, 1, -7]]\nError: name 'poly' is not defined\n\nInput: [[-4, -4, 7, 4]]\nError: name 'poly' is not defined\n\nInput: [[3, -5, -2, 4]]\nError: name 'poly' is not defined\n\nInput: [[-8, 4, 7, -7]]\nError: name 'poly' is not defined\n\nInput: [[10, 7]]\nError: name 'poly' is not defined\n\nInput: [[-8, -3]]\nError: name 'poly' is not defined\n\nInput: [[3, 5, 5, -4]]\nError: name 'poly' is not defined\n\nInput: [[-9, -5, 2, -10, 2, -2, 4, -1]]\nError: name 'poly' is not defined\n\nInput: [[7, 5, -6, -4, -1, -4, -9, 8]]\nError: name 'poly' is not defined\n\nInput: [[1, -9]]\nError: name 'poly' is not defined\n\nInput: [[8, 5]]\nError: name 'poly' is not defined\n\nInput: [[-9, 6, -8, -5]]\nError: name 'poly' is not defined\n\nInput: [[9, -8]]\nError: name 'poly' is not defined\n\nInput: [[2, -7, 8, -3]]\nError: name 'poly' is not defined\n\nInput: [[9, -8]]\nError: name 'poly' is not defined\n\nInput: [[8, 8, 6, 1, -2, -4, 1, -3]]\nError: name 'poly' is not defined\n\nInput: [[2, -6, 10, -1, 4, 1]]\nError: name 'poly' is not defined\n\nInput: [[-10, 4]]\nError: name 'poly' is not defined\n\nInput: [[-8, 7]]\nError: name 'poly' is not defined\n\nInput: [[6, -2, -6, 1]]\nError: name 'poly' is not defined\n\nInput: [[-3, 1]]\nError: name 'poly' is not defined\n\nInput: [[-5, 4, 7, -1, 9, 10]]\nError: name 'poly' is not defined\n\nInput: [[7, -1]]\nError: name 'poly' is not defined\n\nInput: [[-6, -2]]\nError: name 'poly' is not defined\n\nInput: [[-7, 7]]\nError: name 'poly' is not defined\n\nInput: [[-2, -1, 9, -4]]\nError: name 'poly' is not defined\n\nInput: [[-4, 10, -2, 6, 5, -2]]\nError: name 'poly' is not defined\n\nInput: [[-8, 10]]\nError: name 'poly' is not defined\n\nInput: [[-2, -9, -10, 1, -6, 10, -2, -5]]\nError: name 'poly' is not defined\n\nInput: [[7, 3, 7, -10, -7, -8, -6, 7]]\nError: name 'poly' is not defined\n\nInput: [[1, 8]]\nError: name 'poly' is not defined\n\nInput: [[3, -6, -9, -1]]\nError: name 'poly' is not defined\n\nInput: [[-9, 1, -4, -3, -7, 1]]\nError: name 'poly' is not defined\n\nInput: [[9, -6, -3, -5, -5, 3, -10, -5]]\nError: name 'poly' is not defined\n\nInput: [[3, -3, -2, -5, -7, 2]]\nError: name 'poly' is not defined\n\nInput: [[5, -3]]\nError: name 'poly' is not defined\n\nInput: [[4, 1, -1, -3]]\nError: name 'poly' is not defined\n\nInput: [[-10, -4, 2, 1]]\nError: name 'poly' is not defined\n\nInput: [[-8, -2, 1, 10, 6, 2]]\nError: name 'poly' is not defined\n\nInput: [[-10, -7, -2, -5, 8, -2]]\nError: name 'poly' is not defined\n\nInput: [[-7, 9]]\nError: name 'poly' is not defined\n\nInput: [[1, 1, 3, 9, 6, -7, 2, 8]]\nError: name 'poly' is not defined\n\nInput: [[-2, -9, 3, -10]]\nError: name 'poly' is not defined\n\nInput: [[1, 3, -8, 1]]\nError: name 'poly' is not defined\n\nInput: [[-7, -1, 6, -1, 3, 1]]\nError: name 'poly' is not defined\n\nInput: [[-1, 7, -6, -4, 3, 2, -5, 9]]\nError: name 'poly' is not defined\n\nInput: [[2, 7, -10, -1, -1, -4]]\nError: name 'poly' is not defined\n\nInput: [[8, 9, 10, 1, 4, 4, 4, -4]]\nError: name 'poly' is not defined\n\nInput: [[-5, -8, -1, 6, 10, 9, 1, -8]]\nError: name 'poly' is not defined\n\nInput: [[-1, -3, -4, -6]]\nError: name 'poly' is not defined\n\nInput: [[-9, -3]]\nError: name 'poly' is not defined\n\nInput: [[9, -8, 4, 3, 10, 8, -4, 2]]\nError: name 'poly' is not defined\n\nInput: [[2, -3, -6, 10, -10, -7, 3, -3]]\nError: name 'poly' is not defined\n\nInput: [[6, 4, -9, 7]]\nError: name 'poly' is not defined\n\nInput: [[-7, 4, -6, 4]]\nError: name 'poly' is not defined\n\nInput: [[4, 9, 6, 3, 7, 4]]\nError: name 'poly' is not defined\n\nInput: [[5, 4, -2, -3]]\nError: name 'poly' is not defined\n\nInput: [[6, 5, 10, -3, -2, 4]]\nError: name 'poly' is not defined\n\nInput: [[-1, -3]]\nError: name 'poly' is not defined\n\nInput: [[1, 1, 7, -8, -6, -6]]\nError: name 'poly' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/33",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef sort_third(l: list):\n    result = []\n    for i, val in enumerate(l):\n        if i % 3 != 0:\n            result.append(val)\n        else:\n            # Sort the third indices\n            sorted_vals = sorted(l[i::3])\n            result.append(sorted_vals[0])\n    return result\n```",
+          "extracted_code": "def sort_third(l: list):\n    result = []\n    for i, val in enumerate(l):\n        if i % 3 != 0:\n            result.append(val)\n        else:\n            # Sort the third indices\n            sorted_vals = sorted(l[i::3])\n            result.append(sorted_vals[0])\n    return result",
+          "errors": "Base input test failures:\nInput: [[5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]]\nExpected: [1, 3, -5, 2, -3, 3, 5, 0, 123, 9, -10]\nGot: [1, 3, -5, 1, -3, 3, 1, 0, 123, 1, -10]\n\nInput: [[5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]]\nExpected: [1, 3, -5, 2, -3, 3, 5, 0, 123, 9, -10]\nGot: [1, 3, -5, 1, -3, 3, 1, 0, 123, 1, -10]\n\nInput: [[5, 8, -12, 4, 23, 2, 3, 11, 12, -10]]\nExpected: [-10, 8, -12, 3, 23, 2, 4, 11, 12, 5]\nGot: [-10, 8, -12, -10, 23, 2, -10, 11, 12, -10]\n\nInput: [[5, 8, -12, 4, 23, 2, 3, 11, 12, -10]]\nExpected: [-10, 8, -12, 3, 23, 2, 4, 11, 12, 5]\nGot: [-10, 8, -12, -10, 23, 2, -10, 11, 12, -10]\n\nInput: [[5, 6, 3, 4, 8, 9, 2]]\nExpected: [2, 6, 3, 4, 8, 9, 5]\nGot: [2, 6, 3, 2, 8, 9, 2]\n\nInput: [[5, 8, 3, 4, 6, 9, 2]]\nExpected: [2, 8, 3, 4, 6, 9, 5]\nGot: [2, 8, 3, 2, 6, 9, 2]\n\nInput: [[5, 6, 9, 4, 8, 3, 2]]\nExpected: [2, 6, 9, 4, 8, 3, 5]\nGot: [2, 6, 9, 2, 8, 3, 2]\n\nInput: [[5, 6, 3, 4, 8, 9, 2, 1]]\nExpected: [2, 6, 3, 4, 8, 9, 5, 1]\nGot: [2, 6, 3, 2, 8, 9, 2, 1]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/34",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def unique(l: list):\n    return sorted(set(l))",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/35",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def max_element(l: list):\n    return max(l)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/36",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def fizz_buzz(n: int):\n    count = 0\n    for i in range(1, n):\n        if i % 11 == 0 or i % 13 == 0:\n            count += str(i).count('7')\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/37",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def sort_even(l: list):\n    even_indices = [l[i] for i in range(0, len(l), 2)]\n    sorted_even = sorted(even_indices)\n    result = []\n    for i in range(len(l)):\n        if i % 2 == 0:\n            result.append(sorted_even[i // 2])\n        else:\n            result.append(l[i])\n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/38",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef decode_cyclic(s: str):\n    \"\"\"\n    takes as input string encoded with encode_cyclic function. Returns decoded string.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # reverse the process of encoding\n    groups = [(group[0] + group[1:]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)\n```",
+          "extracted_code": "def decode_cyclic(s: str):\n    \"\"\"\n    takes as input string encoded with encode_cyclic function. Returns decoded string.\n    \"\"\"\n    # split string to groups. Each of length 3.\n    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    # reverse the process of encoding\n    groups = [(group[0] + group[1:]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)",
+          "errors": "Base input test failures:\nInput: ['uzfplzjfzcltmdly']\nExpected: fuzzplzjftcllmdy\nGot: uzfplzjfzcltmdly\n\nInput: ['nzyegaghrzqwrdzxckn']\nExpected: ynzaegrghwzqzrdkxcn\nGot: nzyegaghrzqwrdzxckn\n\nInput: ['zxolecqvzyausohgzdod']\nExpected: ozxclezqvuyahsodgzod\nGot: zxolecqvzyausohgzdod\n\nInput: ['cjhzuelsabstpbq']\nExpected: hcjezualstbsqpb\nGot: cjhzuelsabstpbq\n\nInput: ['lfgmjpqnvzwvbusr']\nExpected: glfpmjvqnvzwsbur\nGot: lfgmjpqnvzwvbusr\n\nInput: ['cvxcvhmtgbeweum']\nExpected: xcvhcvgmtwbemeu\nGot: cvxcvhmtgbeweum\n\nInput: ['jgjvebqagrtwheytsyff']\nExpected: jjgbvegqawrtyheytsff\nGot: jgjvebqagrtwheytsyff\n\nInput: ['swbkfgqnvuahcnqgpcu']\nExpected: bswgkfvqnhuaqcncgpu\nGot: swbkfgqnvuahcnqgpcu\n\nInput: ['ssjgajmprs']\nExpected: jssjgarmps\nGot: ssjgajmprs\n\nInput: ['enrrdusnffcnkotf']\nExpected: renurdfsnnfctkof\nGot: enrrdusnffcnkotf\n\nInput: ['cpfgdusjrzf']\nExpected: fcpugdrsjzf\nGot: cpfgdusjrzf\n\nInput: ['gconqokfgb']\nExpected: ogconqgkfb\nGot: gconqokfgb\n\nInput: ['effmnsvrgsdbhffn']\nExpected: fefsmngvrbsdfhfn\nGot: effmnsvrgsdbhffn\n\nInput: ['zwsrgynxlmh']\nExpected: szwyrglnxmh\nGot: zwsrgynxlmh\n\nInput: ['nqdjadvhlu']\nExpected: dnqdjalvhu\nGot: nqdjadvhlu\n\nInput: ['fpkocdqllglypkj']\nExpected: kfpdoclqlygljpk\nGot: fpkocdqllglypkj\n\nInput: ['aosjbowaac']\nExpected: saoojbawac\nGot: aosjbowaac\n\nInput: ['fvdumeezuebnlkqnvwfc']\nExpected: dfveumueznebqlkwnvfc\nGot: fvdumeezuebnlkqnvwfc\n\nInput: ['tzfoanbvufs']\nExpected: ftznoaubvfs\nGot: tzfoanbvufs\n\nInput: ['mnzbtfatwfxpqstecjm']\nExpected: zmnfbtwatpfxtqsjecm\nGot: mnzbtfatwfxpqstecjm\n\nInput: ['nkxxaitehrj']\nExpected: xnkixahterj\nGot: nkxxaitehrj\n\nInput: ['nwxwbyaavoevbjbig']\nExpected: xnwywbvaavoebbjig\nGot: nwxwbyaavoevbjbig\n\nInput: ['gmamklorekv']\nExpected: agmlmkeorkv\nGot: gmamklorekv\n\nInput: ['rihdqvrbxaycb']\nExpected: hrivdqxrbcayb\nGot: rihdqvrbxaycb\n\nInput: ['gwvexchafqe']\nExpected: vgwcexfhaqe\nGot: gwvexchafqe\n\nInput: ['pymjpgzjnva']\nExpected: mpygjpnzjva\nGot: pymjpgzjnva\n\nInput: ['aobgbpwjritkq']\nExpected: baopgbrwjkitq\nGot: aobgbpwjritkq\n\nInput: ['nuccsadagbriq']\nExpected: cnuacsgdaibrq\nGot: nuccsadagbriq\n\nInput: ['gdktamtzhdmj']\nExpected: kgdmtahtzjdm\nGot: gdktamtzhdmj\n\nInput: ['dcprihgimgnjx']\nExpected: pdchrimgijgnx\nGot: dcprihgimgnjx\n\nInput: ['kljtwssfqty']\nExpected: jklstwqsfty\nGot: kljtwssfqty\n\nInput: ['frbqiejenuvxwoy']\nExpected: bfreqinjexuvywo\nGot: frbqiejenuvxwoy\n\nInput: ['tjfuyuhxly']\nExpected: ftjuuylhxy\nGot: tjfuyuhxly\n\nInput: ['fimmmlfohx']\nExpected: mfilmmhfox\nGot: fimmmlfohx\n\nInput: ['xwtgrxfyytcyyjdjoni']\nExpected: txwxgryfyytcdyjnjoi\nGot: xwtgrxfyytcyyjdjoni\n\nInput: ['bzekhcvbldsd']\nExpected: ebzckhlvbdds\nGot: bzekhcvbldsd\n\nInput: ['ghzgwvsorsye']\nExpected: zghvgwrsoesy\nGot: ghzgwvsorsye\n\nInput: ['xkaxuitdibnplwpucw']\nExpected: axkixuitdpbnplwwuc\nGot: xkaxuitdibnplwpucw\n\nInput: ['qcszxfbaocdzseekb']\nExpected: sqcfzxobazcdesekb\nGot: qcszxfbaocdzseekb\n\nInput: ['ueaztzzgmex']\nExpected: auezztmzgex\nGot: ueaztzzgmex\n\nInput: ['jsjyrkasqpujtnvrbmtr']\nExpected: jjskyrqasjpuvtnmrbtr\nGot: jsjyrkasqpujtnvrbmtr\n\nInput: ['fyiurdclyxoalovncksg']\nExpected: ifyduryclaxovlokncsg\nGot: fyiurdclyxoalovncksg\n\nInput: ['erxobpjrpkxbsgobas']\nExpected: xerpobpjrbkxosgsba\nGot: erxobpjrpkxbsgobas\n\nInput: ['lizudkhwdzwjzziyex']\nExpected: zlikuddhwjzwizzxye\nGot: lizudkhwdzwjzziyex\n\nInput: ['vpuzbwgjyicrh']\nExpected: uvpwzbygjrich\nGot: vpuzbwgjyicrh\n\nInput: ['sajlxmochmknulkxecik']\nExpected: jsamlxhocnmkkulcxeik\nGot: sajlxmochmknulkxecik\n\nInput: ['klzoujwdjfwqzk']\nExpected: zkljoujwdqfwzk\nGot: klzoujwdjfwqzk\n\nInput: ['kiccixaihigbhftw']\nExpected: ckixcihaibigthfw\nGot: kiccixaihigbhftw\n\nInput: ['hyrkynsmkvndymdepsu']\nExpected: rhynkyksmdvndymsepu\nGot: hyrkynsmkvndymdepsu\n\nInput: ['dplbtwiqweagdz']\nExpected: ldpwbtwiqgeadz\nGot: dplbtwiqweagdz\n\nInput: ['kjrblffzlakwpz']\nExpected: rkjfbllfzwakpz\nGot: kjrblffzlakwpz\n\nInput: ['hzdeezpqcoxwcwsyyl']\nExpected: dhzzeecpqwoxscwlyy\nGot: hzdeezpqcoxwcwsyyl\n\nInput: ['wcxtvtdgeymblafldwgq']\nExpected: xwcttvedgbymflawldgq\nGot: wcxtvtdgeymblafldwgq\n\nInput: ['ujgibazfslkfyfu']\nExpected: gujaibszfflkuyf\nGot: ujgibazfslkfyfu\n\nInput: ['oqrngzmyfxddlwpbv']\nExpected: roqzngfmydxdplwbv\nGot: oqrngzmyfxddlwpbv\n\nInput: ['vtmdwyiilv']\nExpected: mvtydwliiv\nGot: vtmdwyiilv\n\nInput: ['vghazccwxyibefx']\nExpected: hvgcazxcwbyixef\nGot: vghazccwxyibefx\n\nInput: ['jzyhtisowtzheniomrvr']\nExpected: yjzihtwsohtzienromvr\nGot: jzyhtisowtzheniomrvr\n\nInput: ['eksylebplf']\nExpected: sekeyllbpf\nGot: eksylebplf\n\nInput: ['jxevtanxqvhwb']\nExpected: ejxavtqnxwvhb\nGot: jxevtanxqvhwb\n\nInput: ['joqwqljwckpb']\nExpected: qjolwqcjwbkp\nGot: joqwqljwckpb\n\nInput: ['dkghzktgig']\nExpected: gdkkhzitgg\nGot: dkghzktgig\n\nInput: ['ajbtmlaqsegfktujz']\nExpected: bajltmsaqfeguktjz\nGot: ajbtmlaqsegfktujz\n\nInput: ['xeggrighqjvgjpt']\nExpected: gxeigrqghgjvtjp\nGot: xeggrighqjvgjpt\n\nInput: ['fgkpcfreaypwkstc']\nExpected: kfgfpcarewyptksc\nGot: fgkpcfreaypwkstc\n\nInput: ['ucfyampthmhoh']\nExpected: fucmyahptomhh\nGot: ucfyampthmhoh\n\nInput: ['pcyzbxlzmud']\nExpected: ypcxzbmlzud\nGot: pcyzbxlzmud\n\nInput: ['hualgpgmtpv']\nExpected: ahuplgtgmpv\nGot: hualgpgmtpv\n\nInput: ['dofgkmknkdhimryg']\nExpected: fdomgkkknidhymrg\nGot: dofgkmknkdhimryg\n\nInput: ['btvvhktzpvkuekialfq']\nExpected: vbtkvhptzuvkiekfalq\nGot: btvvhktzpvkuekialfq\n\nInput: ['hbvgnvmuxckcqjvx']\nExpected: vhbvgnxmucckvqjx\nGot: hbvgnvmuxckcqjvx\n\nInput: ['qhwrawfsmuevokszgfqy']\nExpected: wqhwramfsvuesokfzgqy\nGot: qhwrawfsmuevokszgfqy\n\nInput: ['uakqzvnihhfcwz']\nExpected: kuavqzhnichfwz\nGot: uakqzvnihhfcwz\n\nInput: ['rlnvwwhoxlwkyibhnjg']\nExpected: nrlwvwxhoklwbyijhng\nGot: rlnvwwhoxlwkyibhnjg\n\nInput: ['cmprarjwtqovlcizhgpu']\nExpected: pcmrratjwvqoilcgzhpu\nGot: cmprarjwtqovlcizhgpu\n\nInput: ['rbfrlfpxzfm']\nExpected: frbfrlzpxfm\nGot: rbfrlfpxzfm\n\nInput: ['lutbkxocedmbfctzmuy']\nExpected: tluxbkeocbdmtfcuzmy\nGot: lutbkxocedmbfctzmuy\n\nInput: ['oajodvoerl']\nExpected: joavodroel\nGot: oajodvoerl\n\nInput: ['bvmxponldendphf']\nExpected: mbvoxpdnldenfph\nGot: bvmxponldendphf\n\nInput: ['jdliznkftyvzwdqty']\nExpected: ljdniztkfzyvqwdty\nGot: jdliznkftyvzwdqty\n\nInput: ['hkbaihpjquf']\nExpected: bhkhaiqpjuf\nGot: hkbaihpjquf\n\nInput: ['hhneeogusm']\nExpected: nhhoeesgum\nGot: hhneeogusm\n\nInput: ['qvnehikoshpzahmfkep']\nExpected: nqviehskozhpmahefkp\nGot: qvnehikoshpzahmfkep\n\nInput: ['urrclsjxeosc']\nExpected: rursclejxcos\nGot: urrclsjxeosc\n\nInput: ['ghfmyzjawzulrop']\nExpected: fghzmywjalzupro\nGot: ghfmyzjawzulrop\n\nInput: ['ycqtsqaatceckf']\nExpected: qycqtstaaccekf\nGot: ycqtsqaatceckf\n\nInput: ['ipybztxdkypoxjuhf']\nExpected: yiptbzkxdoypuxjhf\nGot: ipybztxdkypoxjuhf\n\nInput: ['ozjthdoukvrqjb']\nExpected: jozdthkouqvrjb\nGot: ozjthdoukvrqjb\n\nInput: ['ipfbolvlrwwtznrdbta']\nExpected: fiplborvltwwrzntdba\nGot: ipfbolvlrwwtznrdbta\n\nInput: ['xzhjnclgnihoinfs']\nExpected: hxzcjnnlgoihfins\nGot: xzhjnclgnihoinfs\n\nInput: ['pfkwcebjnkoudgosogtj']\nExpected: kpfewcnbjukoodggsotj\nGot: pfkwcebjnkoudgosogtj\n\nInput: ['aqbojzzuehqwirlx']\nExpected: baqzojezuwhqlirx\nGot: aqbojzzuehqwirlx\n\nInput: ['mulyzumnbuzr']\nExpected: lmuuyzbmnruz\nGot: mulyzumnbuzr\n\nInput: ['nzdtnhuxogdzdguy']\nExpected: dnzhtnouxzgdudgy\nGot: nzdtnhuxogdzdguy\n\nInput: ['juvowhyjstne']\nExpected: vjuhowsyjetn\nGot: juvowhyjstne\n\nInput: ['ybzdvuvvwyeyxepv']\nExpected: zybudvwvvyyepxev\nGot: ybzdvuvvwyeyxepv\n\nInput: ['dyunpcsjbdozu']\nExpected: udycnpbsjzdou\nGot: dyunpcsjbdozu\n\nInput: ['hfbhubqoykkyrwjx']\nExpected: bhfbhuyqoykkjrwx\nGot: hfbhubqoykkyrwjx\n\nInput: ['bkkjxpyfzrtcqpqna']\nExpected: kbkpjxzyfcrtqqpna\nGot: bkkjxpyfzrtcqpqna\n\nInput: ['hpncxsmjpus']\nExpected: nhpscxpmjus\nGot: hpncxsmjpus"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/39",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def prime_fib(n: int):\n    def is_prime(num):\n        if num < 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n    \n    def is_fibonacci(num):\n        a, b = 0, 1\n        while b <= num:\n            if b == num:\n                return True\n            a, b = b, a + b\n        return False\n    \n    fib_numbers = []\n    a, b = 0, 1\n    while len(fib_numbers) < n:\n        if is_prime(a) and is_fibonacci(a):\n            fib_numbers.append(a)\n        a, b = b, a + b\n    \n    return fib_numbers[-1]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/40",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def triples_sum_to_zero(l: list):\n    l.sort()\n    for i in range(len(l) - 2):\n        left = i + 1\n        right = len(l) - 1\n        while left < right:\n            total = l[i] + l[left] + l[right]\n            if total == 0:\n                return True\n            elif total < 0:\n                left += 1\n            else:\n                right -= 1\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/41",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def car_race_collision(n: int):\n    return n * n",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/42",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def incr_list(l: list):\n    return [x + 1 for x in l]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/43",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def pairs_sum_to_zero(l):\n    s = set()\n    for num in l:\n        if -num in s:\n            return True\n        s.add(num)\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/44",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def change_base(x: int, base: int):\n    result = []\n    while x > 0:\n        result.append(str(x % base))\n        x = x // base\n    return ''.join(reversed(result)) if result else '0'",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/45",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def triangle_area(a, h):\n    \"\"\"Given length of a side and high return area for a triangle.\n    >>> triangle_area(5, 3)\n    7.5\n    \"\"\"\n    return (a * h) / 2",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/46",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def fib4(n: int):\n    if n == 0 or n == 1:\n        return 0\n    if n == 2:\n        return 2\n    if n == 3:\n        return 0\n    a, b, c, d = 0, 0, 2, 0\n    for _ in range(4, n + 1):\n        new_val = a + b + c + d\n        a, b, c, d = b, c, d, new_val\n    return d",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/47",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def median(l: list):\n    l.sort()\n    n = len(l)\n    if n % 2 == 1:\n        return l[n // 2]\n    else:\n        return (l[n // 2 - 1] + l[n // 2]) / 2",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/48",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def is_palindrome(text: str):\n    return text == text[::-1]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/49",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def modp(n: int, p: int):\n    return pow(2, n, p)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/50",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def decode_shift(s: str):\n    \"\"\"\n    takes as input string encoded with encode_shift function. Returns decoded string.\n    \"\"\"\n    return \"\".join([chr(((ord(ch) - 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/51",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def remove_vowels(text):\n    vowels = \"aeiouAEIOU\"\n    return ''.join(char for char in text if char not in vowels)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/52",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def below_threshold(l: list, t: int):\n    return all(num < t for num in l)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/53",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def add(x: int, y: int) -> int:\n    return x + y",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/54",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def same_chars(s0: str, s1: str):\n    return set(s0) == set(s1)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/55",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def fib(n: int):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/56",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def correct_bracketing(brackets: str):\n    balance = 0\n    for char in brackets:\n        if char == '<':\n            balance += 1\n        elif char == '>':\n            balance -= 1\n        if balance < 0:\n            return False\n    return balance == 0",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/57",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef monotonic(l: list) -> bool:\n    if not l:\n        return True\n    for i in range(len(l) - 1):\n        if l[i] < l[i + 1]:\n            continue\n        elif l[i] > l[i + 1]:\n            break\n    return True\n```",
+          "extracted_code": "def monotonic(l: list) -> bool:\n    if not l:\n        return True\n    for i in range(len(l) - 1):\n        if l[i] < l[i + 1]:\n            continue\n        elif l[i] > l[i + 1]:\n            break\n    return True",
+          "errors": "Base input test failures:\nInput: [[1, 20, 4, 10]]\nExpected: False\nGot: True\n\nInput: [[1, 2, 3, 2, 5, 60]]\nExpected: False\nGot: True"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/58",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def common(l1: list, l2: list):\n    \"\"\"Return sorted unique common elements for two lists.\n    >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])\n    [1, 5, 653]\n    >>> common([5, 3, 2, 8], [3, 2])\n    [2, 3]\n    \"\"\"\n    set1 = set(l1)\n    set2 = set(l2)\n    common_elements = set1 & set2\n    return sorted(common_elements)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/59",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def largest_prime_factor(n: int):\n    largest = -1\n    while n % 2 == 0:\n        n //= 2\n    i = 3\n    while i * i <= n:\n        while n % i == 0:\n            n //= i\n            largest = i\n        i += 2\n    if n > 1:\n        largest = n\n    return largest",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/60",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def sum_to_n(n: int):\n    return n * (n + 1) // 2",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/61",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def correct_bracketing(brackets: str):\n    balance = 0\n    for char in brackets:\n        if char == '(':\n            balance += 1\n        elif char == ')':\n            balance -= 1\n        if balance < 0:\n            return False\n    return balance == 0",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/62",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def derivative(xs: list):\n    return [i * xs[i] for i in range(1, len(xs))]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/63",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef fibfib(n: int):\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    a, b, c = 0, 0, 1\n    for _ in range(3, n + 1):\n        c = a + b + c\n        a, b = b, c\n    return c\n```",
+          "extracted_code": "def fibfib(n: int):\n    if n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    a, b, c = 0, 0, 1\n    for _ in range(3, n + 1):\n        c = a + b + c\n        a, b = b, c\n    return c",
+          "errors": "Base input test failures:\nInput: [5]\nExpected: 4\nGot: 5\n\nInput: [8]\nExpected: 24\nGot: 70\n\nInput: [10]\nExpected: 81\nGot: 408\n\nInput: [12]\nExpected: 274\nGot: 2378\n\nInput: [14]\nExpected: 927\nGot: 13860"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/64",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef vowels_count(s):\n    vowels = {'a', 'e', 'i', 'o', 'u', 'y'}\n    return sum(1 for c in s if c in vowels)\n```",
+          "extracted_code": "def vowels_count(s):\n    vowels = {'a', 'e', 'i', 'o', 'u', 'y'}\n    return sum(1 for c in s if c in vowels)",
+          "errors": "Base input test failures:\nInput: ['Alone']\nExpected: 3\nGot: 2\n\nInput: ['bye']\nExpected: 1\nGot: 2\n\nInput: ['keY']\nExpected: 2\nGot: 1\n\nInput: ['ACEDY']\nExpected: 3\nGot: 0"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/65",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef circular_shift(x, shift):\n    s = str(x)\n    n = len(s)\n    shift = shift % n\n    return s[shift:] + s[:shift]\n```",
+          "extracted_code": "def circular_shift(x, shift):\n    s = str(x)\n    n = len(s)\n    shift = shift % n\n    return s[shift:] + s[:shift]",
+          "errors": "Base input test failures:\nInput: [100, 2]\nExpected: 001\nGot: 010\n\nInput: [97, 8]\nExpected: 79\nGot: 97"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/66",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def digitSum(s):\n    return sum(ord(c) for c in s if c.isupper())",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/67",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef fruit_distribution(s, n):\n    # Split the string into parts\n    parts = s.split()\n    apples = int(parts[0].split('and')[0])\n    oranges = int(parts[0].split('and')[1])\n    # Calculate mango fruits\n    mangoes = n - apples - oranges\n    return mangoes\n```",
+          "extracted_code": "def fruit_distribution(s, n):\n    # Split the string into parts\n    parts = s.split()\n    apples = int(parts[0].split('and')[0])\n    oranges = int(parts[0].split('and')[1])\n    # Calculate mango fruits\n    mangoes = n - apples - oranges\n    return mangoes",
+          "errors": "Base input test failures:\nInput: ['5 apples and 6 oranges', 19]\nError: list index out of range\n\nInput: ['5 apples and 6 oranges', 21]\nError: list index out of range\n\nInput: ['0 apples and 1 oranges', 3]\nError: list index out of range\n\nInput: ['1 apples and 0 oranges', 3]\nError: list index out of range\n\nInput: ['2 apples and 3 oranges', 100]\nError: list index out of range\n\nInput: ['2 apples and 3 oranges', 5]\nError: list index out of range\n\nInput: ['1 apples and 100 oranges', 120]\nError: list index out of range"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/68",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def pluck(arr):\n    min_even = None\n    index = -1\n    for i, val in enumerate(arr):\n        if val % 2 == 0:\n            if min_even is None or val < min_even or (val == min_even and i < index):\n                min_even = val\n                index = i\n    return [min_even, index] if min_even is not None else []",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/69",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def search(lst):\n    from collections import Counter\n    count = Counter(lst)\n    for num in sorted(count, reverse=True):\n        if count[num] >= num:\n            return num\n    return -1",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/70",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef strange_sort_list(lst):\n    if not lst:\n        return []\n    sorted_lst = []\n    left, right = 0, len(lst) - 1\n    while left <= right:\n        if left == right:\n            sorted_lst.append(lst[left])\n            break\n        sorted_lst.append(lst[left])\n        sorted_lst.append(lst[right])\n        left += 1\n        right -= 1\n    return sorted_lst\n```",
+          "extracted_code": "def strange_sort_list(lst):\n    if not lst:\n        return []\n    sorted_lst = []\n    left, right = 0, len(lst) - 1\n    while left <= right:\n        if left == right:\n            sorted_lst.append(lst[left])\n            break\n        sorted_lst.append(lst[left])\n        sorted_lst.append(lst[right])\n        left += 1\n        right -= 1\n    return sorted_lst",
+          "errors": "Base input test failures:\nInput: [[5, 6, 7, 8, 9, 1]]\nExpected: [1, 9, 5, 8, 6, 7]\nGot: [5, 1, 6, 9, 7, 8]\n\nInput: [[0, 2, 2, 2, 5, 5, -5, -5]]\nExpected: [-5, 5, -5, 5, 0, 2, 2, 2]\nGot: [0, -5, 2, -5, 2, 5, 2, 5]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/71",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef triangle_area(a, b, c):\n    if a + b > c and a + c > b and b + c > a:\n        return round((a * b * c) / (4 * (a**2 + b**2 + c**2)**0.5), 2)\n    else:\n        return -1\n```",
+          "extracted_code": "def triangle_area(a, b, c):\n    if a + b > c and a + c > b and b + c > a:\n        return round((a * b * c) / (4 * (a**2 + b**2 + c**2)**0.5), 2)\n    else:\n        return -1",
+          "errors": "Base input test failures:\nInput: [3, 4, 5]\nExpected: 6.0\nGot: 2.12\n\nInput: [4, 8, 5]\nExpected: 8.18\nGot: 3.9\n\nInput: [2, 2, 2]\nExpected: 1.73\nGot: 0.58\n\nInput: [10, 5, 7]\nExpected: 16.25\nGot: 6.63\n\nInput: [1, 1, 1]\nExpected: 0.43\nGot: 0.14"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/72",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def will_it_fly(q, w):\n    if isinstance(q, list) and all(isinstance(x, int) for x in q):\n        if q == q[::-1]:\n            total = sum(q)\n            return total <= w\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/73",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef smallest_change(arr):\n    left = 0\n    right = len(arr) - 1\n    changes = 0\n    \n    while left < right:\n        if arr[left] != arr[right]:\n            changes += 1\n            arr[left] = arr[right]\n        left += 1\n        if arr[left] != arr[right]:\n            changes += 1\n            arr[right] = arr[left]\n        right -= 1\n    \n    return changes\n```",
+          "extracted_code": "def smallest_change(arr):\n    left = 0\n    right = len(arr) - 1\n    changes = 0\n    \n    while left < right:\n        if arr[left] != arr[right]:\n            changes += 1\n            arr[left] = arr[right]\n        left += 1\n        if arr[left] != arr[right]:\n            changes += 1\n            arr[right] = arr[left]\n        right -= 1\n    \n    return changes",
+          "errors": "Base input test failures:\nInput: [[6, 9, 7, 4, 4, 5, 3, 2]]\nExpected: 3\nGot: 7\n\nInput: [[2, 2, 3, 4, 4, 3, 2]]\nExpected: 2\nGot: 3\n\nInput: [[2, 4, 4]]\nExpected: 1\nGot: 2\n\nInput: [[2, 4, 4, 4]]\nExpected: 1\nGot: 2\n\nInput: [[1, 1]]\nExpected: 0\nGot: 1"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/74",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def total_match(lst1, lst2):\n    total1 = sum(len(s) for s in lst1)\n    total2 = sum(len(s) for s in lst2)\n    if total1 < total2:\n        return lst1\n    elif total1 > total2:\n        return lst2\n    else:\n        return lst1",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/75",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef is_multiply_prime(a):\n    \"\"\"Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    and false otherwise.\n    Knowing that (a) is less then 100. \n    Example:\n    is_multiply_prime(30) == True\n    30 = 2 * 3 * 5\n    \"\"\"\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    \n    for i in range(2, int(a**0.5) + 1):\n        if a % i == 0:\n            j = a // i\n            if is_prime(i) and is_prime(j):\n                return True\n    return False\n```",
+          "extracted_code": "def is_multiply_prime(a):\n    \"\"\"Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    and false otherwise.\n    Knowing that (a) is less then 100. \n    Example:\n    is_multiply_prime(30) == True\n    30 = 2 * 3 * 5\n    \"\"\"\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    \n    for i in range(2, int(a**0.5) + 1):\n        if a % i == 0:\n            j = a // i\n            if is_prime(i) and is_prime(j):\n                return True\n    return False",
+          "errors": "Base input test failures:\nInput: [30]\nExpected: True\nGot: False\n\nInput: [8]\nExpected: True\nGot: False\n\nInput: [10]\nExpected: False\nGot: True"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/76",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def is_simple_power(x, n):\n    if n == 1:\n        return x == 1\n    if x == 1:\n        return True\n    i = 0\n    while n ** i <= x:\n        if n ** i == x:\n            return True\n        i += 1\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/77",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef iscube(a):\n    b = round(a ** (1/3))\n    return b ** 3 == a\n```",
+          "extracted_code": "def iscube(a):\n    b = round(a ** (1/3))\n    return b ** 3 == a",
+          "errors": "Base input test failures:\nInput: [-1]\nError: type complex doesn't define __round__ method\n\nInput: [-1]\nError: type complex doesn't define __round__ method"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/78",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def hex_key(num):\n    hex_digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'}\n    prime_hex_digits = {'2', '3', '5', '7', 'B', 'D'}\n    count = 0\n    for ch in num:\n        if ch in prime_hex_digits:\n            count += 1\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/79",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def decimal_to_binary(decimal):\n    binary = bin(decimal)[2:]\n    return f\"db{binary}db\"",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/80",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def is_happy(s):\n    for i in range(len(s) - 2):\n        if s[i] == s[i+1] or s[i] == s[i+2] or s[i+1] == s[i+2]:\n            return False\n    return len(s) >= 3",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/81",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef numerical_letter_grade(grades):\n    letter_grades = []\n    for g in grades:\n        if g >= 4.0:\n            letter_grades.append('A+')\n        elif g >= 3.7:\n            letter_grades.append('A')\n        elif g >= 3.3:\n            letter_grades.append('A-')\n        elif g >= 3.0:\n            letter_grades.append('B+')\n        elif g >= 2.7:\n            letter_grades.append('B')\n        elif g >= 2.3:\n            letter_grades.append('B-')\n        elif g >= 2.0:\n            letter_grades.append('C+')\n        elif g >= 1.7:\n            letter_grades.append('C')\n        elif g >= 1.3:\n            letter_grades.append('C-')\n        elif g >= 1.0:\n            letter_grades.append('D+')\n        elif g >= 0.7:\n            letter_grades.append('D')\n        else:\n            letter_grades.append('D-')\n    return letter_grades\n```",
+          "extracted_code": "def numerical_letter_grade(grades):\n    letter_grades = []\n    for g in grades:\n        if g >= 4.0:\n            letter_grades.append('A+')\n        elif g >= 3.7:\n            letter_grades.append('A')\n        elif g >= 3.3:\n            letter_grades.append('A-')\n        elif g >= 3.0:\n            letter_grades.append('B+')\n        elif g >= 2.7:\n            letter_grades.append('B')\n        elif g >= 2.3:\n            letter_grades.append('B-')\n        elif g >= 2.0:\n            letter_grades.append('C+')\n        elif g >= 1.7:\n            letter_grades.append('C')\n        elif g >= 1.3:\n            letter_grades.append('C-')\n        elif g >= 1.0:\n            letter_grades.append('D+')\n        elif g >= 0.7:\n            letter_grades.append('D')\n        else:\n            letter_grades.append('D-')\n    return letter_grades",
+          "errors": "Base input test failures:\nInput: [[4.0, 3, 1.7, 2, 3.5]]\nExpected: ['A+', 'B', 'C-', 'C', 'A-']\nGot: ['A+', 'B+', 'C', 'C+', 'A-']\n\nInput: [[0.0]]\nExpected: ['E']\nGot: ['D-']\n\nInput: [[1, 0.3, 1.5, 2.8, 3.3]]\nExpected: ['D', 'D-', 'C-', 'B', 'B+']\nGot: ['D+', 'D-', 'C-', 'B', 'A-']\n\nInput: [[0, 0.7]]\nExpected: ['E', 'D-']\nGot: ['D-', 'D']"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/82",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def prime_length(string):\n    length = len(string)\n    if length < 2:\n        return False\n    for i in range(2, int(length**0.5) + 1):\n        if length % i == 0:\n            return False\n    return True",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/83",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def starts_one_ends(n):\n    if n == 1:\n        return 1\n    count = 0\n    # Numbers starting with 1\n    count += 9 * 10 ** (n - 2)\n    # Numbers ending with 1\n    count += 1 * 10 ** (n - 1)\n    # Subtract the overlap (numbers starting and ending with 1)\n    count -= 1 * 10 ** (n - 2)\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/84",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef solve(N):\n    binary_sum = 0\n    while N > 0:\n        binary_sum += N % 2\n        N = N // 2\n    return bin(binary_sum)[2:]\n```",
+          "extracted_code": "def solve(N):\n    binary_sum = 0\n    while N > 0:\n        binary_sum += N % 2\n        N = N // 2\n    return bin(binary_sum)[2:]",
+          "errors": "Base input test failures:\nInput: [1000]\nExpected: 1\nGot: 110\n\nInput: [150]\nExpected: 110\nGot: 100\n\nInput: [147]\nExpected: 1100\nGot: 100\n\nInput: [333]\nExpected: 1001\nGot: 101\n\nInput: [963]\nExpected: 10010\nGot: 110"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/85",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def add(lst):\n    return sum(x for i, x in enumerate(lst) if i % 2 == 1 and x % 2 == 0)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/86",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef anti_shuffle(s):\n    return ''.join(sorted(s.split()))\n```",
+          "extracted_code": "def anti_shuffle(s):\n    return ''.join(sorted(s.split()))",
+          "errors": "Base input test failures:\nInput: ['hello']\nExpected: ehllo\nGot: hello\n\nInput: ['number']\nExpected: bemnru\nGot: number\n\nInput: ['Hello World!!!']\nExpected: Hello !!!Wdlor\nGot: HelloWorld!!!\n\nInput: ['Hi. My name is Mister Robot. How are you?']\nExpected: .Hi My aemn is Meirst .Rboot How aer ?ouy\nGot: Hi.HowMisterMyRobot.areisnameyou?"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/87",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def get_row(lst, x):\n    result = []\n    for i, row in enumerate(lst):\n        for j, val in enumerate(row):\n            if val == x:\n                result.append((i, j))\n    result.sort(key=lambda coord: (coord[0], -coord[1]))\n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/88",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef sort_array(array):\n    total = array[0] + array[-1]\n    if total % 2 == 1:\n        return array.copy()\n    else:\n        return sorted(array, reverse=True)\n```",
+          "extracted_code": "def sort_array(array):\n    total = array[0] + array[-1]\n    if total % 2 == 1:\n        return array.copy()\n    else:\n        return sorted(array, reverse=True)",
+          "errors": "Base input test failures:\nInput: [[]]\nError: list index out of range\n\nInput: [[2, 4, 3, 0, 1, 5]]\nExpected: [0, 1, 2, 3, 4, 5]\nGot: [2, 4, 3, 0, 1, 5]\n\nInput: [[2, 1]]\nExpected: [1, 2]\nGot: [2, 1]\n\nInput: [[15, 42, 87, 32, 11, 0]]\nExpected: [0, 11, 15, 32, 42, 87]\nGot: [15, 42, 87, 32, 11, 0]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/89",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef encrypt(s):\n    return ''.join([chr((ord(c) - ord('a') - 2) % 26 + ord('a')) for c in s])\n```",
+          "extracted_code": "def encrypt(s):\n    return ''.join([chr((ord(c) - ord('a') - 2) % 26 + ord('a')) for c in s])",
+          "errors": "Base input test failures:\nInput: ['hi']\nExpected: lm\nGot: fg\n\nInput: ['asdfghjkl']\nExpected: ewhjklnop\nGot: yqbdefhij\n\nInput: ['gf']\nExpected: kj\nGot: ed\n\nInput: ['et']\nExpected: ix\nGot: cr\n\nInput: ['faewfawefaewg']\nExpected: jeiajeaijeiak\nGot: dycudyucdycue\n\nInput: ['hellomyfriend']\nExpected: lippsqcjvmirh\nGot: fcjjmkwdpgclb\n\nInput: ['dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh']\nExpected: hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl\nGot: bvxbjklgjdsfkgjsdfjgfsdlkjgklsdfjgklsdfdsasdf\n\nInput: ['a']\nExpected: e\nGot: y"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/90",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef next_smallest(lst):\n    if not lst:\n        return None\n    sorted_lst = sorted(lst)\n    if len(sorted_lst) < 2:\n        return None\n    return sorted_lst[1]\n```",
+          "extracted_code": "def next_smallest(lst):\n    if not lst:\n        return None\n    sorted_lst = sorted(lst)\n    if len(sorted_lst) < 2:\n        return None\n    return sorted_lst[1]",
+          "errors": "Base input test failures:\nInput: [[1, 1]]\nExpected: None\nGot: 1\n\nInput: [[1, 1]]\nExpected: None\nGot: 1"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/91",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef is_bored(S):\n    import re\n    count = 0\n    for sentence in re.split(r'[.!?]', S):\n        if sentence and sentence[0] == 'I':\n            count += 1\n    return count\n```",
+          "extracted_code": "def is_bored(S):\n    import re\n    count = 0\n    for sentence in re.split(r'[.!?]', S):\n        if sentence and sentence[0] == 'I':\n            count += 1\n    return count",
+          "errors": "Base input test failures:\nInput: ['Is the sky blue?']\nExpected: 0\nGot: 1\n\nInput: ['I feel good today. I will be productive. will kill It']\nExpected: 2\nGot: 1"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/92",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def any_int(x, y, z):\n    if isinstance(x, int) and isinstance(y, int) and isinstance(z, int):\n        return x == y + z or y == x + z or z == x + y\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/93",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef encode(message):\n    vowels = {'a', 'e', 'i', 'o', 'u'}\n    result = []\n    for char in message:\n        if char.isalpha():\n            if char in vowels:\n                # Replace with the letter 2 places ahead\n                vowel_index = vowels.index(char)\n                new_vowel = vowels[(vowel_index + 2) % 5]\n                result.append(new_vowel.upper())\n            else:\n                # Swap case\n                result.append(char.lower() if char.isupper() else char.upper())\n        else:\n            result.append(char)\n    return ''.join(result)\n```",
+          "extracted_code": "def encode(message):\n    vowels = {'a', 'e', 'i', 'o', 'u'}\n    result = []\n    for char in message:\n        if char.isalpha():\n            if char in vowels:\n                # Replace with the letter 2 places ahead\n                vowel_index = vowels.index(char)\n                new_vowel = vowels[(vowel_index + 2) % 5]\n                result.append(new_vowel.upper())\n            else:\n                # Swap case\n                result.append(char.lower() if char.isupper() else char.upper())\n        else:\n            result.append(char)\n    return ''.join(result)",
+          "errors": "Base input test failures:\nInput: ['TEST']\nExpected: tgst\nGot: test\n\nInput: ['Mudasir']\nError: 'set' object has no attribute 'index'\n\nInput: ['YES']\nExpected: ygs\nGot: yes\n\nInput: ['This is a message']\nError: 'set' object has no attribute 'index'\n\nInput: ['I DoNt KnOw WhAt tO WrItE']\nError: 'set' object has no attribute 'index'"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/94",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def skjkasdkd(lst):\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    \n    def sum_digits(n):\n        return sum(int(d) for d in str(n))\n    \n    max_prime = 0\n    for num in lst:\n        if is_prime(num) and num > max_prime:\n            max_prime = num\n    return sum_digits(max_prime)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/95",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef check_dict_case(dict):\n    if not dict:\n        return False\n    keys = dict.keys()\n    all_lower = all(v.lower() == v for v in keys)\n    all_upper = all(v.upper() == v for v in keys)\n    return all_lower or all_upper\n```",
+          "extracted_code": "def check_dict_case(dict):\n    if not dict:\n        return False\n    keys = dict.keys()\n    all_lower = all(v.lower() == v for v in keys)\n    all_upper = all(v.upper() == v for v in keys)\n    return all_lower or all_upper",
+          "errors": "Base input test failures:\nInput: [{'p': 'pineapple', '5': 'banana', 'a': 'apple'}]\nExpected: False\nGot: True\n\nInput: [{'p': 'pineapple', '5': 'banana', 'a': 'apple'}]\nExpected: False\nGot: True"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/96",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def count_up_to(n):\n    \"\"\"Implement a function that takes an non-negative integer and returns an array of the first n\n    integers that are prime numbers and less than n.\n    for example:\n    count_up_to(5) => [2,3]\n    count_up_to(11) => [2,3,5,7]\n    count_up_to(0) => []\n    count_up_to(20) => [2,3,5,7,11,13,17,19]\n    count_up_to(1) => []\n    count_up_to(18) => [2,3,5,7,11,13,17]\n    \"\"\"\n    if n <= 2:\n        return []\n    primes = []\n    is_prime = [True] * (n)\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if is_prime[i]:\n            for j in range(i*i, n, i):\n                is_prime[j] = False\n    for i in range(2, n):\n        if is_prime[i]:\n            primes.append(i)\n    return primes",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/97",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def multiply(a, b):\n    return (a % 10) * (b % 10)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/98",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def count_upper(s):\n    count = 0\n    for i, char in enumerate(s):\n        if i % 2 == 0 and char.isupper() and char in 'AEIOU':\n            count += 1\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/99",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef closest_integer(value):\n    import re\n    match = re.match(r'^-?\\d+\\.?\\d*$', value)\n    if not match:\n        return int(value)\n    parts = list(map(float, value.split('.')))\n    integer_part = int(parts[0])\n    decimal_part = parts[1] if len(parts) > 1 else 0\n    if decimal_part == 0:\n        return integer_part\n    if decimal_part > 0.5:\n        return integer_part + 1 if integer_part > 0 else integer_part - 1\n    else:\n        return integer_part if integer_part > 0 else integer_part - 1\n```",
+          "extracted_code": "def closest_integer(value):\n    import re\n    match = re.match(r'^-?\\d+\\.?\\d*$', value)\n    if not match:\n        return int(value)\n    parts = list(map(float, value.split('.')))\n    integer_part = int(parts[0])\n    decimal_part = parts[1] if len(parts) > 1 else 0\n    if decimal_part == 0:\n        return integer_part\n    if decimal_part > 0.5:\n        return integer_part + 1 if integer_part > 0 else integer_part - 1\n    else:\n        return integer_part if integer_part > 0 else integer_part - 1",
+          "errors": "Base input test failures:\nInput: ['15.3']\nExpected: 15\nGot: 16"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/100",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef make_a_pile(n):\n    result = []\n    current = n\n    for _ in range(n):\n        result.append(current)\n        if n % 2 == 1:\n            current += 2\n        else:\n            current += 1\n    return result\n```",
+          "extracted_code": "def make_a_pile(n):\n    result = []\n    current = n\n    for _ in range(n):\n        result.append(current)\n        if n % 2 == 1:\n            current += 2\n        else:\n            current += 1\n    return result",
+          "errors": "Base input test failures:\nInput: [4]\nExpected: [4, 6, 8, 10]\nGot: [4, 5, 6, 7]\n\nInput: [6]\nExpected: [6, 8, 10, 12, 14, 16]\nGot: [6, 7, 8, 9, 10, 11]\n\nInput: [8]\nExpected: [8, 10, 12, 14, 16, 18, 20, 22]\nGot: [8, 9, 10, 11, 12, 13, 14, 15]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/101",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef words_string(s):\n    return s.split(',')\n```",
+          "extracted_code": "def words_string(s):\n    return s.split(',')",
+          "errors": "Base input test failures:\nInput: ['Hi, my name is John']\nExpected: ['Hi', 'my', 'name', 'is', 'John']\nGot: ['Hi', ' my name is John']\n\nInput: ['One, two, three, four, five, six']\nExpected: ['One', 'two', 'three', 'four', 'five', 'six']\nGot: ['One', ' two', ' three', ' four', ' five', ' six']\n\nInput: ['Hi, my name']\nExpected: ['Hi', 'my', 'name']\nGot: ['Hi', ' my name']\n\nInput: ['One,, two, three, four, five, six,']\nExpected: ['One', 'two', 'three', 'four', 'five', 'six']\nGot: ['One', '', ' two', ' three', ' four', ' five', ' six', '']\n\nInput: ['']\nExpected: []\nGot: ['']\n\nInput: ['ahmed     , gamal']\nExpected: ['ahmed', 'gamal']\nGot: ['ahmed     ', ' gamal']"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/102",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def choose_num(x, y):\n    \"\"\"This function takes two positive numbers x and y and returns the\n    biggest even integer number that is in the range [x, y] inclusive. If \n    there's no such number, then the function should return -1.\n\n    For example:\n    choose_num(12, 15) = 14\n    choose_num(13, 12) = -1\n    \"\"\"\n    # Find the maximum even number in the range [x, y]\n    max_even = -1\n    for num in range(y, x - 1, -1):\n        if num % 2 == 0:\n            max_even = num\n            break\n    return max_even",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/103",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef rounded_avg(n, m):\n    if n > m:\n        return -1\n    total = (n + m) * (m - n + 1) // 2\n    avg = total / (m - n + 1)\n    rounded = round(avg)\n    return f\"0b{bin(rounded)}\" if rounded != 0 else \"0b0\"\n```",
+          "extracted_code": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    total = (n + m) * (m - n + 1) // 2\n    avg = total / (m - n + 1)\n    rounded = round(avg)\n    return f\"0b{bin(rounded)}\" if rounded != 0 else \"0b0\"",
+          "errors": "Base input test failures:\nInput: [1, 5]\nExpected: 0b11\nGot: 0b0b11\n\nInput: [7, 13]\nExpected: 0b1010\nGot: 0b0b1010\n\nInput: [964, 977]\nExpected: 0b1111001010\nGot: 0b0b1111001010\n\nInput: [996, 997]\nExpected: 0b1111100100\nGot: 0b0b1111100100\n\nInput: [560, 851]\nExpected: 0b1011000010\nGot: 0b0b1011000010\n\nInput: [185, 546]\nExpected: 0b101101110\nGot: 0b0b101101110\n\nInput: [362, 496]\nExpected: 0b110101101\nGot: 0b0b110101101\n\nInput: [350, 902]\nExpected: 0b1001110010\nGot: 0b0b1001110010\n\nInput: [197, 233]\nExpected: 0b11010111\nGot: 0b0b11010111\n\nInput: [5, 5]\nExpected: 0b101\nGot: 0b0b101"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/104",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def unique_digits(x):\n    return sorted([num for num in x if all(int(digit) % 2 != 0 for digit in str(num))])",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/105",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef by_length(arr):\n    # Filter and sort the numbers between 1 and 9 inclusive\n    filtered = [x for x in arr if 1 <= x <= 9]\n    filtered.sort()\n    \n    # Reverse the filtered array\n    filtered.reverse()\n    \n    # Map the numbers to their corresponding names\n    mapping = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"]\n    result = [mapping[i] for i in filtered]\n    \n    return result\n```",
+          "extracted_code": "def by_length(arr):\n    # Filter and sort the numbers between 1 and 9 inclusive\n    filtered = [x for x in arr if 1 <= x <= 9]\n    filtered.sort()\n    \n    # Reverse the filtered array\n    filtered.reverse()\n    \n    # Map the numbers to their corresponding names\n    mapping = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"]\n    result = [mapping[i] for i in filtered]\n    \n    return result",
+          "errors": "Base input test failures:\nInput: [[2, 1, 1, 4, 5, 8, 2, 3]]\nExpected: ['Eight', 'Five', 'Four', 'Three', 'Two', 'Two', 'One', 'One']\nGot: ['Nine', 'Six', 'Five', 'Four', 'Three', 'Three', 'Two', 'Two']\n\nInput: [[1, -1, 55]]\nExpected: ['One']\nGot: ['Two']\n\nInput: [[1, -1, 3, 2]]\nExpected: ['Three', 'Two', 'One']\nGot: ['Four', 'Three', 'Two']\n\nInput: [[9, 4, 8]]\nError: list index out of range"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/106",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef f(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 2 == 0:\n            result.append(math.factorial(i))\n        else:\n            result.append(sum(range(1, i + 1)))\n    return result\n```",
+          "extracted_code": "def f(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 2 == 0:\n            result.append(math.factorial(i))\n        else:\n            result.append(sum(range(1, i + 1)))\n    return result",
+          "errors": "Base input test failures:\nInput: [5]\nError: name 'math' is not defined\n\nInput: [7]\nError: name 'math' is not defined\n\nInput: [3]\nError: name 'math' is not defined"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/107",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def even_odd_palindrome(n):\n    count_even = 0\n    count_odd = 0\n    for i in range(1, n + 1):\n        s = str(i)\n        if s == s[::-1]:\n            if i % 2 == 0:\n                count_even += 1\n            else:\n                count_odd += 1\n    return (count_even, count_odd)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/108",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef count_nums(arr):\n    def get_sign_digits(num):\n        if num == 0:\n            return [0]\n        sign = 1 if num > 0 else -1\n        digits = []\n        for d in str(abs(num)):\n            digits.append(int(d))\n        return [sign * int(d) for d in digits]\n    \n    total = 0\n    for num in arr:\n        digits = get_sign_digits(num)\n        if sum(digits) > 0:\n            total += 1\n    return total\n```",
+          "extracted_code": "def count_nums(arr):\n    def get_sign_digits(num):\n        if num == 0:\n            return [0]\n        sign = 1 if num > 0 else -1\n        digits = []\n        for d in str(abs(num)):\n            digits.append(int(d))\n        return [sign * int(d) for d in digits]\n    \n    total = 0\n    for num in arr:\n        digits = get_sign_digits(num)\n        if sum(digits) > 0:\n            total += 1\n    return total",
+          "errors": "Base input test failures:\nInput: [[12, 23, 34, -45, -56, 0]]\nExpected: 5\nGot: 3"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/109",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def move_one_ball(arr):\n    if not arr:\n        return True\n    n = len(arr)\n    for i in range(n):\n        # Check if shifting right by i positions results in a sorted array\n        shifted = arr[i:] + arr[:i]\n        if sorted(shifted) == shifted:\n            return True\n    return False",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/110",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def exchange(lst1, lst2):\n    even_count = 0\n    for num in lst1:\n        if num % 2 == 0:\n            even_count += 1\n    for num in lst2:\n        if num % 2 == 0:\n            even_count += 1\n    return \"YES\" if even_count >= len(lst1) else \"NO\"",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/111",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef histogram(test):\n    from collections import Counter\n    counts = Counter(test.split())\n    most_common = max(counts.items(), key=lambda x: x[1])\n    return {most_common[0]: most_common[1]}\n```",
+          "extracted_code": "def histogram(test):\n    from collections import Counter\n    counts = Counter(test.split())\n    most_common = max(counts.items(), key=lambda x: x[1])\n    return {most_common[0]: most_common[1]}",
+          "errors": "Base input test failures:\nInput: ['a b b a']\nExpected: {'a': 2, 'b': 2}\nGot: {'a': 2}\n\nInput: ['a b c a b']\nExpected: {'a': 2, 'b': 2}\nGot: {'a': 2}\n\nInput: ['a b c d g']\nExpected: {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'g': 1}\nGot: {'a': 1}\n\nInput: ['r t g']\nExpected: {'r': 1, 't': 1, 'g': 1}\nGot: {'r': 1}\n\nInput: ['r t g']\nExpected: {'r': 1, 't': 1, 'g': 1}\nGot: {'r': 1}\n\nInput: ['']\nError: max() iterable argument is empty"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/112",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef reverse_delete(s, c):\n    result = ''.join([char for char in s if char not in c])\n    return (result, str(result == result[::-1]))\n```",
+          "extracted_code": "def reverse_delete(s, c):\n    result = ''.join([char for char in s if char not in c])\n    return (result, str(result == result[::-1]))",
+          "errors": "Base input test failures:\nInput: ['abcde', 'ae']\nExpected: ('bcd', False)\nGot: ('bcd', 'False')\n\nInput: ['abcdef', 'b']\nExpected: ('acdef', False)\nGot: ('acdef', 'False')\n\nInput: ['abcdedcba', 'ab']\nExpected: ('cdedc', True)\nGot: ('cdedc', 'True')\n\nInput: ['dwik', 'w']\nExpected: ('dik', False)\nGot: ('dik', 'False')\n\nInput: ['a', 'a']\nExpected: ('', True)\nGot: ('', 'True')\n\nInput: ['abcdedcba', '']\nExpected: ('abcdedcba', True)\nGot: ('abcdedcba', 'True')\n\nInput: ['abcdedcba', 'v']\nExpected: ('abcdedcba', True)\nGot: ('abcdedcba', 'True')\n\nInput: ['vabba', 'v']\nExpected: ('abba', True)\nGot: ('abba', 'True')\n\nInput: ['mamma', 'mia']\nExpected: ('', True)\nGot: ('', 'True')"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/113",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def odd_count(lst):\n    result = []\n    for i, s in enumerate(lst):\n        count = sum(1 for c in s if c.isdigit() and int(c) % 2 != 0)\n        result.append(f\"the number of odd elements {count}n the str{count}ng {count} of the {count}nput.\")\n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/114",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        if current_sum < min_sum:\n            min_sum = current_sum\n        if current_sum < 0:\n            current_sum = 0\n    return min_sum\n```",
+          "extracted_code": "def minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        if current_sum < min_sum:\n            min_sum = current_sum\n        if current_sum < 0:\n            current_sum = 0\n    return min_sum",
+          "errors": "Base input test failures:\nInput: [[2, 3, 4, 1, 2, 4]]\nExpected: 1\nGot: 2\n\nInput: [[-1, -2, -3]]\nExpected: -6\nGot: -3\n\nInput: [[-1, -2, -3, 2, -10]]\nExpected: -14\nGot: -8\n\nInput: [[-1, -2, -3, 10, -5]]\nExpected: -6\nGot: -3\n\nInput: [[100, -1, -2, -3, 10, -5]]\nExpected: -6\nGot: 94\n\nInput: [[10, 11, 13, 8, 3, 4]]\nExpected: 3\nGot: 10\n\nInput: [[100, -33, 32, -1, 0, -2]]\nExpected: -33\nGot: 67\n\nInput: [[1, -1]]\nExpected: -1\nGot: 0"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/115",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef max_fill(grid, capacity):\n    total_water = 0\n    for row in grid:\n        total_water += sum(row)\n    return total_water // capacity\n```",
+          "extracted_code": "def max_fill(grid, capacity):\n    total_water = 0\n    for row in grid:\n        total_water += sum(row)\n    return total_water // capacity",
+          "errors": "Base input test failures:\nInput: [[[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2]\nExpected: 5\nGot: 4\n\nInput: [[[1, 1, 1, 1], [1, 1, 1, 1]], 9]\nExpected: 2\nGot: 0"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/116",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def sort_array(arr):\n    return sorted(arr, key=lambda x: (bin(x).count('1'), x))",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/117",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef select_words(s, n):\n    words = s.split()\n    result = []\n    for word in words:\n        consonants = 0\n        for char in word:\n            if char.isalpha():\n                consonants += 1\n        if consonants == n:\n            result.append(word)\n    return result\n```",
+          "extracted_code": "def select_words(s, n):\n    words = s.split()\n    result = []\n    for word in words:\n        consonants = 0\n        for char in word:\n            if char.isalpha():\n                consonants += 1\n        if consonants == n:\n            result.append(word)\n    return result",
+          "errors": "Base input test failures:\nInput: ['Mary had a little lamb', 4]\nExpected: ['little']\nGot: ['Mary', 'lamb']\n\nInput: ['Mary had a little lamb', 4]\nExpected: ['little']\nGot: ['Mary', 'lamb']\n\nInput: ['Mary had a little lamb', 3]\nExpected: ['Mary', 'lamb']\nGot: ['had']\n\nInput: ['Mary had a little lamb', 3]\nExpected: ['Mary', 'lamb']\nGot: ['had']\n\nInput: ['Hello world', 4]\nExpected: ['world']\nGot: []\n\nInput: ['Hello world', 4]\nExpected: ['world']\nGot: []\n\nInput: ['Uncle sam', 3]\nExpected: ['Uncle']\nGot: ['sam']\n\nInput: ['Uncle sam', 3]\nExpected: ['Uncle']\nGot: ['sam']\n\nInput: ['a b c d e f', 1]\nExpected: ['b', 'c', 'd', 'f']\nGot: ['a', 'b', 'c', 'd', 'e', 'f']\n\nInput: ['a b c d e f', 1]\nExpected: ['b', 'c', 'd', 'f']\nGot: ['a', 'b', 'c', 'd', 'e', 'f']"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/118",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef get_closest_vowel(word):\n    vowels = \"aeiouAEIOU\"\n    for i in range(len(word) - 2, -1, -1):\n        if word[i] in vowels:\n            return word[i]\n    return \"\"\n```",
+          "extracted_code": "def get_closest_vowel(word):\n    vowels = \"aeiouAEIOU\"\n    for i in range(len(word) - 2, -1, -1):\n        if word[i] in vowels:\n            return word[i]\n    return \"\"",
+          "errors": "Base input test failures:\nInput: ['easy']\nExpected: \nGot: a\n\nInput: ['eAsy']\nExpected: \nGot: A\n\nInput: ['ali']\nExpected: \nGot: a\n\nInput: ['ab']\nExpected: \nGot: a\n\nInput: ['quick']\nExpected: \nGot: i\n\nInput: ['Asia']\nExpected: \nGot: i"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/119",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def match_parens(lst):\n    s1, s2 = lst\n    # Check if one string is a valid parentheses string\n    def is_valid(s):\n        balance = 0\n        for c in s:\n            if c == '(':\n                balance += 1\n            elif c == ')':\n                balance -= 1\n                if balance < 0:\n                    return False\n        return balance == 0\n    \n    # Try both possible orders\n    if is_valid(s1 + s2) or is_valid(s2 + s1):\n        return 'Yes'\n    else:\n        return 'No'",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/120",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef maximum(arr, k):\n    arr.sort(reverse=True)\n    return arr[:k]\n```",
+          "extracted_code": "def maximum(arr, k):\n    arr.sort(reverse=True)\n    return arr[:k]",
+          "errors": "Base input test failures:\nInput: [[5, -3, -4], 3]\nExpected: [-4, -3, 5]\nGot: [5, -3, -4]\n\nInput: [[123, 20, 2, 1, 0, -3, -123], 3]\nExpected: [2, 20, 123]\nGot: [123, 20, 2]\n\nInput: [[20, 2, 1, 0, -3, -123], 4]\nExpected: [0, 1, 2, 20]\nGot: [20, 2, 1, 0]\n\nInput: [[15, 5, 3, 0, 0, -8, -13], 7]\nExpected: [-13, -8, 0, 0, 3, 5, 15]\nGot: [15, 5, 3, 0, 0, -8, -13]\n\nInput: [[5, 3, 2, 0, -1, -10], 2]\nExpected: [3, 5]\nGot: [5, 3]\n\nInput: [[4, -4], 2]\nExpected: [-4, 4]\nGot: [4, -4]\n\nInput: [[10, -10], 2]\nExpected: [-10, 10]\nGot: [10, -10]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/121",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef solution(lst):\n    return sum(num for i, num in enumerate(lst) if i % 2 == 1 and num % 2 != 0)\n```",
+          "extracted_code": "def solution(lst):\n    return sum(num for i, num in enumerate(lst) if i % 2 == 1 and num % 2 != 0)",
+          "errors": "Base input test failures:\nInput: [[5, 8, 7, 1]]\nExpected: 12\nGot: 1\n\nInput: [[3, 3, 3, 3, 3]]\nExpected: 9\nGot: 6\n\nInput: [[30, 13, 24, 321]]\nExpected: 0\nGot: 334\n\nInput: [[5, 9]]\nExpected: 5\nGot: 9\n\nInput: [[30, 13, 23, 32]]\nExpected: 23\nGot: 13\n\nInput: [[3, 13, 2, 9]]\nExpected: 3\nGot: 22"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/122",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef add_elements(arr, k):\n    total = 0\n    for i in range(k):\n        if i < len(arr):\n            if 10 <= abs(arr[i]) <= 99:\n                total += arr[i]\n    return total\n```",
+          "extracted_code": "def add_elements(arr, k):\n    total = 0\n    for i in range(k):\n        if i < len(arr):\n            if 10 <= abs(arr[i]) <= 99:\n                total += arr[i]\n    return total",
+          "errors": "Base input test failures:\nInput: [[1, -2, -3, 41, 57, 76, 87, 88, 99], 3]\nExpected: -4\nGot: 0\n\nInput: [[11, 21, 3, 90, 5, 6, 7, 8, 9], 4]\nExpected: 125\nGot: 122\n\nInput: [[111, 21, 3, 4000, 5, 6, 7, 8, 9], 4]\nExpected: 24\nGot: 21\n\nInput: [[1], 1]\nExpected: 1\nGot: 0"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/123",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def get_odd_collatz(n):\n    sequence = []\n    current = n\n    while current != 1:\n        if current % 2 == 1:\n            sequence.append(current)\n        current = current * 3 + 1 if current % 2 else current // 2\n    sequence.append(1)\n    return sorted(sequence)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/124",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef valid_date(date):\n    \"\"\"You have to write a function which validates a given date string and\n    returns True if the date is valid otherwise False.\n    The date is valid if all of the following rules are satisfied:\n    1. The date string is not empty.\n    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.\n    3. The months should not be less than 1 or higher than 12.\n    4. The date should be in the format: mm-dd-yyyy\n\n    for example: \n    valid_date('03-11-2000') => True\n\n    valid_date('15-01-2012') => False\n\n    valid_date('04-0-2040') => False\n\n    valid_date('06-04-2020') => True\n\n    valid_date('06/04/2020') => False\n    \"\"\"\n    import re\n    from datetime import datetime\n\n    # Check if the date string is in the correct format\n    if not re.match(r'^\\d{2}-\\d{2}-\\d{4}$', date):\n        return False\n\n    # Split the date into month, day, year\n    parts = date.split('-')\n    if len(parts) != 3:\n        return False\n\n    month, day, year = parts[0], parts[1], parts[2]\n    month = int(month)\n    day = int(day)\n    year = int(year)\n\n    # Check if month is between 1 and 12\n    if month < 1 or month > 12:\n        return False\n\n    # Check if day is between 1 and 31, 30, or 29 depending on the month\n    if month in [4, 6, 9, 11]:\n        if day < 1 or day > 30:\n            return False\n    elif month in [1, 3",
+          "extracted_code": "<think>\n</think>\n\n```python\ndef valid_date(date):\n    \"\"\"You have to write a function which validates a given date string and\n    returns True if the date is valid otherwise False.\n    The date is valid if all of the following rules are satisfied:\n    1. The date string is not empty.\n    2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.\n    3. The months should not be less than 1 or higher than 12.\n    4. The date should be in the format: mm-dd-yyyy\n\n    for example: \n    valid_date('03-11-2000') => True\n\n    valid_date('15-01-2012') => False\n\n    valid_date('04-0-2040') => False\n\n    valid_date('06-04-2020') => True\n\n    valid_date('06/04/2020') => False\n    \"\"\"\n    import re\n    from datetime import datetime\n\n    # Check if the date string is in the correct format\n    if not re.match(r'^\\d{2}-\\d{2}-\\d{4}$', date):\n        return False\n\n    # Split the date into month, day, year\n    parts = date.split('-')\n    if len(parts) != 3:\n        return False\n\n    month, day, year = parts[0], parts[1], parts[2]\n    month = int(month)\n    day = int(day)\n    year = int(year)\n\n    # Check if month is between 1 and 12\n    if month < 1 or month > 12:\n        return False\n\n    # Check if day is between 1 and 31, 30, or 29 depending on the month\n    if month in [4, 6, 9, 11]:\n        if day < 1 or day > 30:\n            return False\n    elif month in [1, 3",
+          "errors": "Error during testing: invalid syntax (<string>, line 1)"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/125",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def split_words(txt):\n    if ' ' in txt:\n        return txt.split()\n    elif ',' in txt:\n        return [word for word in txt.split(',') if word]\n    else:\n        count = 0\n        for char in txt:\n            if char.islower() and ord(char) % 2 == 0:\n                count += 1\n        return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/126",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef is_sorted(lst):\n    for i in range(len(lst) - 1):\n        if lst[i] >= lst[i + 1]:\n            return False\n    return True\n```",
+          "extracted_code": "def is_sorted(lst):\n    for i in range(len(lst) - 1):\n        if lst[i] >= lst[i + 1]:\n            return False\n    return True",
+          "errors": "Base input test failures:\nInput: [[1, 2, 2, 3, 3, 4]]\nExpected: True\nGot: False"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/127",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def intersection(interval1, interval2):\n    start = max(interval1[0], interval2[0])\n    end = min(interval1[1], interval2[1])\n    \n    if start >= end:\n        return \"NO\"\n    \n    length = end - start\n    if length < 2:\n        return \"NO\"\n    \n    # Check if length is a prime number\n    def is_prime(n):\n        if n < 2:\n            return False\n        for i in range(2, int(n ** 0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    \n    return \"YES\" if is_prime(length) else \"NO\"",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/128",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef prod_signs(arr):\n    if not arr:\n        return None\n    product = 1\n    for num in arr:\n        if num == 0:\n            return None\n        if num > 0:\n            product *= 1\n        elif num < 0:\n            product *= -1\n    return product * sum(abs(num) for num in arr)\n```",
+          "extracted_code": "def prod_signs(arr):\n    if not arr:\n        return None\n    product = 1\n    for num in arr:\n        if num == 0:\n            return None\n        if num > 0:\n            product *= 1\n        elif num < 0:\n            product *= -1\n    return product * sum(abs(num) for num in arr)",
+          "errors": "Base input test failures:\nInput: [[0, 1]]\nExpected: 0\nGot: None\n\nInput: [[-1, 1, 1, 0]]\nExpected: 0\nGot: None"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/129",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef minPath(grid, k):\n    from collections import deque\n    \n    n = len(grid)\n    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n    \n    # Directions: right, down, left, up\n    \n    # BFS to find the minimum path\n    visited = [[False] * n for _ in range(n)]\n    queue = deque()\n    \n    # Start from all cells\n    for i in range(n):\n        for j in range(n):\n            if not visited[i][j]:\n                queue.append((i, j, [grid[i][j]]))\n                visited[i][j] = True\n    \n    # Sort the queue based on the current path length and value\n    queue.sort(key=lambda x: (len(x[2]), x[2]))\n    \n    # Find the minimum path\n    while queue:\n        i, j, path = queue.popleft()\n        if len(path) == k:\n            return path\n        for dx, dy in directions:\n            ni, nj = i + dx, j + dy\n            if 0 <= ni < n and 0 <= nj < n and not visited[ni][nj]:\n                visited[ni][nj] = True\n                queue.append((ni, nj, path + [grid[ni][nj]]))\n    \n    return []\n```",
+          "extracted_code": "def minPath(grid, k):\n    from collections import deque\n    \n    n = len(grid)\n    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n    \n    # Directions: right, down, left, up\n    \n    # BFS to find the minimum path\n    visited = [[False] * n for _ in range(n)]\n    queue = deque()\n    \n    # Start from all cells\n    for i in range(n):\n        for j in range(n):\n            if not visited[i][j]:\n                queue.append((i, j, [grid[i][j]]))\n                visited[i][j] = True\n    \n    # Sort the queue based on the current path length and value\n    queue.sort(key=lambda x: (len(x[2]), x[2]))\n    \n    # Find the minimum path\n    while queue:\n        i, j, path = queue.popleft()\n        if len(path) == k:\n            return path\n        for dx, dy in directions:\n            ni, nj = i + dx, j + dy\n            if 0 <= ni < n and 0 <= nj < n and not visited[ni][nj]:\n                visited[ni][nj] = True\n                queue.append((ni, nj, path + [grid[ni][nj]]))\n    \n    return []",
+          "errors": "Base input test failures:\nInput: [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]], 4]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[6, 4, 13, 10], [5, 7, 12, 1], [3, 16, 11, 15], [8, 14, 9, 2]], 7]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[8, 14, 9, 2], [6, 4, 13, 15], [5, 7, 1, 12], [3, 10, 11, 16]], 5]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[11, 8, 7, 2], [5, 16, 14, 4], [9, 3, 15, 6], [12, 13, 10, 1]], 9]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[12, 13, 10, 1], [9, 3, 15, 6], [5, 16, 14, 4], [11, 8, 7, 2]], 12]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[2, 7, 4], [3, 1, 5], [6, 8, 9]], 8]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[6, 1, 5], [3, 8, 9], [2, 7, 4]], 8]\nError: 'collections.deque' object has no attribute 'sort'\n\nInput: [[[1, 2], [3, 4]], 10]\nError: 'collections.deque' object has no attribute 'sort'"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/130",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef tri(n):\n    if n == 0:\n        return []\n    if n == 1:\n        return [3]\n    if n == 2:\n        return [3, 2]\n    tri_list = [3, 2]\n    a, b = 3, 2\n    for i in range(2, n + 1):\n        if i % 2 == 0:\n            tri_list.append(1 + i // 2)\n        else:\n            tri_list.append(a + b + tri_list[-1])\n            a, b = b, a + b\n    return tri_list\n```",
+          "extracted_code": "def tri(n):\n    if n == 0:\n        return []\n    if n == 1:\n        return [3]\n    if n == 2:\n        return [3, 2]\n    tri_list = [3, 2]\n    a, b = 3, 2\n    for i in range(2, n + 1):\n        if i % 2 == 0:\n            tri_list.append(1 + i // 2)\n        else:\n            tri_list.append(a + b + tri_list[-1])\n            a, b = b, a + b\n    return tri_list",
+          "errors": "Base input test failures:\nInput: [3]\nExpected: [1, 3, 2.0, 8.0]\nGot: [3, 2, 2, 7]\n\nInput: [4]\nExpected: [1, 3, 2.0, 8.0, 3.0]\nGot: [3, 2, 2, 7, 3]\n\nInput: [5]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0]\nGot: [3, 2, 2, 7, 3, 10]\n\nInput: [6]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]\nGot: [3, 2, 2, 7, 3, 10, 4]\n\nInput: [7]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]\nGot: [3, 2, 2, 7, 3, 10, 4, 16]\n\nInput: [8]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]\nGot: [3, 2, 2, 7, 3, 10, 4, 16, 5]\n\nInput: [9]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]\nGot: [3, 2, 2, 7, 3, 10, 4, 16, 5, 24]\n\nInput: [20]\nExpected: [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0]\nGot: [3, 2, 2, 7, 3, 10, 4, 16, 5, 24, 6, 37, 7, 57, 8, 89, 9, 140, 10, 222, 11]\n\nInput: [0]\nExpected: [1]\nGot: []\n\nInput: [1]\nExpected: [1, 3]\nGot: [3]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/131",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef digits(n):\n    product = 1\n    for digit in str(n):\n        if int(digit) % 2 != 0:\n            product *= int(digit)\n    return product if product != 0 else 0\n```",
+          "extracted_code": "def digits(n):\n    product = 1\n    for digit in str(n):\n        if int(digit) % 2 != 0:\n            product *= int(digit)\n    return product if product != 0 else 0",
+          "errors": "Base input test failures:\nInput: [2468]\nExpected: 0\nGot: 1"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/132",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef is_nested(string):\n    balance = 0\n    for char in string:\n        if char == '[':\n            balance += 1\n        elif char == ']':\n            balance -= 1\n            if balance < 0:\n                return False\n    return balance > 0\n```",
+          "extracted_code": "def is_nested(string):\n    balance = 0\n    for char in string:\n        if char == '[':\n            balance += 1\n        elif char == ']':\n            balance -= 1\n            if balance < 0:\n                return False\n    return balance > 0",
+          "errors": "Base input test failures:\nInput: ['[[]]']\nExpected: True\nGot: False\n\nInput: ['[[[[]]]]']\nExpected: True\nGot: False\n\nInput: ['[][][[]]']\nExpected: True\nGot: False\n\nInput: ['[[]']\nExpected: False\nGot: True\n\nInput: ['[[][]]']\nExpected: True\nGot: False\n\nInput: ['[[[[[[[[']\nExpected: False\nGot: True"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/133",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef sum_squares(lst):\n    return sum(int(x) ** 2 for x in lst)\n```",
+          "extracted_code": "def sum_squares(lst):\n    return sum(int(x) ** 2 for x in lst)",
+          "errors": "Base input test failures:\nInput: [[1.4, 4.2, 0]]\nExpected: 29\nGot: 17\n\nInput: [[-1.4, 4.6, 6.3]]\nExpected: 75\nGot: 53\n\nInput: [[-1.4, 17.9, 18.9, 19.9]]\nExpected: 1086\nGot: 975"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/134",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef check_if_last_char_is_a_letter(txt):\n    if not txt:\n        return False\n    last_char = txt[-1]\n    return last_char.isalpha() and not last_char.isalnum()\n```",
+          "extracted_code": "def check_if_last_char_is_a_letter(txt):\n    if not txt:\n        return False\n    last_char = txt[-1]\n    return last_char.isalpha() and not last_char.isalnum()",
+          "errors": "Base input test failures:\nInput: ['apple pi e']\nExpected: True\nGot: False\n\nInput: ['A']\nExpected: True\nGot: False"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/135",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef can_arrange(arr):\n    n = len(arr)\n    for i in range(1, n):\n        if arr[i] <= arr[i-1]:\n            return i\n    return -1\n```",
+          "extracted_code": "def can_arrange(arr):\n    n = len(arr)\n    for i in range(1, n):\n        if arr[i] <= arr[i-1]:\n            return i\n    return -1",
+          "errors": "Base input test failures:\nInput: [[4, 8, 5, 7, 3]]\nExpected: 4\nGot: 2"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/136",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def largest_smallest_integers(lst):\n    negatives = [x for x in lst if x < 0]\n    positives = [x for x in lst if x > 0]\n    \n    a = max(negatives) if negatives else None\n    b = min(positives) if positives else None\n    \n    return (a, b)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/137",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef compare_one(a, b):\n    if a == b:\n        return None\n    # Convert to float if necessary\n    try:\n        a_float = float(a)\n        b_float = float(b)\n    except ValueError:\n        # Check if a is a string with comma as decimal separator\n        if isinstance(a, str) and ',' in a:\n            a_float = float(a.replace(',', '.'))\n        else:\n            a_float = float(a)\n        # Check if b is a string with comma as decimal separator\n        if isinstance(b, str) and ',' in b:\n            b_float = float(b.replace(',', '.'))\n        else:\n            b_float = float(b)\n    if a_float > b_float:\n        return a\n    else:\n        return b\n```",
+          "extracted_code": "def compare_one(a, b):\n    if a == b:\n        return None\n    # Convert to float if necessary\n    try:\n        a_float = float(a)\n        b_float = float(b)\n    except ValueError:\n        # Check if a is a string with comma as decimal separator\n        if isinstance(a, str) and ',' in a:\n            a_float = float(a.replace(',', '.'))\n        else:\n            a_float = float(a)\n        # Check if b is a string with comma as decimal separator\n        if isinstance(b, str) and ',' in b:\n            b_float = float(b.replace(',', '.'))\n        else:\n            b_float = float(b)\n    if a_float > b_float:\n        return a\n    else:\n        return b",
+          "errors": "Base input test failures:\nInput: ['1', 1]\nExpected: None\nGot: 1"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/138",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def is_equal_to_sum_even(n):\n    if n % 2 != 0:\n        return False\n    return (n - 8) >= 0 and (n - 8) % 2 == 0",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/139",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef special_factorial(n):\n    result = 1\n    for i in range(1, n + 1):\n        result *= i * factorial(i)\n    return result\n\nimport math\n\ndef factorial(x):\n    return math.factorial(x)\n```",
+          "extracted_code": "def special_factorial(n):\n    result = 1\n    for i in range(1, n + 1):\n        result *= i * factorial(i)\n    return result\n\nimport math\n\ndef factorial(x):\n    return math.factorial(x)",
+          "errors": "Base input test failures:\nInput: [4]\nExpected: 288\nGot: 6912\n\nInput: [5]\nExpected: 34560\nGot: 4147200\n\nInput: [7]\nExpected: 125411328000\nGot: 632073093120000"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/140",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef fix_spaces(text):\n    result = []\n    i = 0\n    while i < len(text):\n        if text[i] == ' ':\n            if i > 0 and text[i-1] == ' ':\n                if i > 1 and text[i-2] == ' ':\n                    result.append('-')\n                    i += 1\n                else:\n                    result.append('_')\n                    i += 1\n            else:\n                result.append('_')\n                i += 1\n        else:\n            result.append(text[i])\n            i += 1\n    return ''.join(result)\n```",
+          "extracted_code": "def fix_spaces(text):\n    result = []\n    i = 0\n    while i < len(text):\n        if text[i] == ' ':\n            if i > 0 and text[i-1] == ' ':\n                if i > 1 and text[i-2] == ' ':\n                    result.append('-')\n                    i += 1\n                else:\n                    result.append('_')\n                    i += 1\n            else:\n                result.append('_')\n                i += 1\n        else:\n            result.append(text[i])\n            i += 1\n    return ''.join(result)",
+          "errors": "Base input test failures:\nInput: ['Exa   mple']\nExpected: Exa-mple\nGot: Exa__-mple\n\nInput: ['   Exa 1 2 2 mple']\nExpected: -Exa_1_2_2_mple\nGot: __-Exa_1_2_2_mple"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/141",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef file_name_check(file_name):\n    import re\n    # Check for more than three digits\n    if str(file_name).count('0') > 3:\n        return \"No\"\n    # Check for exactly one dot\n    if file_name.count('.') != 1:\n        return \"No\"\n    # Check before dot is non-empty and starts with letter\n    before_dot = file_name.split('.')[0]\n    if not before_dot or not before_dot.isalpha():\n        return \"No\"\n    # Check after dot is one of txt, exe, dll\n    after_dot = file_name.split('.')[1]\n    if after_dot not in ['txt', 'exe', 'dll']:\n        return \"No\"\n    return \"Yes\"\n```",
+          "extracted_code": "def file_name_check(file_name):\n    import re\n    # Check for more than three digits\n    if str(file_name).count('0') > 3:\n        return \"No\"\n    # Check for exactly one dot\n    if file_name.count('.') != 1:\n        return \"No\"\n    # Check before dot is non-empty and starts with letter\n    before_dot = file_name.split('.')[0]\n    if not before_dot or not before_dot.isalpha():\n        return \"No\"\n    # Check after dot is one of txt, exe, dll\n    after_dot = file_name.split('.')[1]\n    if after_dot not in ['txt', 'exe', 'dll']:\n        return \"No\"\n    return \"Yes\"",
+          "errors": "Base input test failures:\nInput: ['MY16FILE3.exe']\nExpected: Yes\nGot: No\n\nInput: ['this_is_valid.txt']\nExpected: Yes\nGot: No\n\nInput: ['I563_No.exe']\nExpected: Yes\nGot: No\n\nInput: ['Is3youfault.txt']\nExpected: Yes\nGot: No\n\nInput: ['no_one#knows.dll']\nExpected: Yes\nGot: No"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/142",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def sum_squares(lst):\n    total = 0\n    for i, num in enumerate(lst):\n        if i % 3 == 0:\n            total += num ** 2\n        elif i % 4 == 0:\n            total += num ** 3\n        else:\n            total += num\n    return total",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/143",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef words_in_sentence(sentence):\n    import math\n    primes = set()\n    for i in range(2, int(math.isqrt(100)) + 1):\n        if i * i > 100:\n            break\n        for j in range(i, 100, i):\n            primes.add(j)\n    result = []\n    words = sentence.split()\n    for word in words:\n        if len(word) in primes:\n            result.append(word)\n    return ' '.join(result)\n```",
+          "extracted_code": "def words_in_sentence(sentence):\n    import math\n    primes = set()\n    for i in range(2, int(math.isqrt(100)) + 1):\n        if i * i > 100:\n            break\n        for j in range(i, 100, i):\n            primes.add(j)\n    result = []\n    words = sentence.split()\n    for word in words:\n        if len(word) in primes:\n            result.append(word)\n    return ' '.join(result)",
+          "errors": "Base input test failures:\nInput: ['This is a test']\nExpected: is\nGot: This is test\n\nInput: ['lets go for swimming']\nExpected: go for\nGot: lets go for swimming\n\nInput: ['there is no place available here']\nExpected: there is no place\nGot: there is no place available here\n\nInput: ['here']\nExpected: \nGot: here\n\nInput: ['here is']\nExpected: is\nGot: here is"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/144",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef simplify(x, n):\n    from fractions import Fraction\n    f1 = Fraction(x)\n    f2 = Fraction(n)\n    return f1 * f2.denominator == f2 * f1.numerator\n```",
+          "extracted_code": "def simplify(x, n):\n    from fractions import Fraction\n    f1 = Fraction(x)\n    f2 = Fraction(n)\n    return f1 * f2.denominator == f2 * f1.numerator",
+          "errors": "Base input test failures:\nInput: ['1/5', '5/1']\nExpected: True\nGot: False\n\nInput: ['5/1', '3/1']\nExpected: True\nGot: False\n\nInput: ['2/10', '50/10']\nExpected: True\nGot: False\n\nInput: ['7/2', '4/2']\nExpected: True\nGot: False\n\nInput: ['11/6', '6/1']\nExpected: True\nGot: False\n\nInput: ['2/4', '8/4']\nExpected: True\nGot: False\n\nInput: ['2/4', '4/2']\nExpected: True\nGot: False\n\nInput: ['1/5', '5/1']\nExpected: True\nGot: False"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/145",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef order_by_points(nums):\n    return sorted(nums, key=lambda x: (sum(int(d) for d in str(abs(x))), nums.index(x)))\n```",
+          "extracted_code": "def order_by_points(nums):\n    return sorted(nums, key=lambda x: (sum(int(d) for d in str(abs(x))), nums.index(x)))",
+          "errors": "Base input test failures:\nInput: [[1, 11, -1, -11, -12]]\nExpected: [-1, -11, 1, -12, 11]\nGot: [1, -1, 11, -11, -12]\n\nInput: [[1, -11, -32, 43, 54, -98, 2, -3]]\nExpected: [-3, -32, -98, -11, 1, 2, 43, 54]\nGot: [1, -11, 2, -3, -32, 43, 54, -98]\n\nInput: [[0, 6, 6, -76, -21, 23, 4]]\nExpected: [-76, -21, 0, 4, 23, 6, 6]\nGot: [0, -21, 4, 23, 6, 6, -76]"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/146",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def specialFilter(nums):\n    count = 0\n    for num in nums:\n        if num > 10:\n            first_digit = int(str(abs(num))[0])\n            last_digit = int(str(abs(num))[-1])\n            if first_digit % 2 != 0 and last_digit % 2 != 0:\n                count += 1\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/147",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def get_max_triples(n):\n    a = [i * i - i + 1 for i in range(1, n + 1)]\n    count = 0\n    for i in range(n - 2):\n        for j in range(i + 1, n - 1):\n            for k in range(j + 1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/148",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def bf(planet1, planet2):\n    planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    if planet1 not in planets or planet2 not in planets:\n        return ()\n    index1 = planets.index(planet1)\n    index2 = planets.index(planet2)\n    if index1 < index2:\n        return tuple(planets[index1+1:index2])\n    else:\n        return tuple(planets[index2+1:index1])",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/149",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef sorted_list_sum(lst):\n    return sorted(lst, key=lambda x: (len(x), x))\n```",
+          "extracted_code": "def sorted_list_sum(lst):\n    return sorted(lst, key=lambda x: (len(x), x))",
+          "errors": "Base input test failures:\nInput: [['aa', 'a', 'aaa']]\nExpected: ['aa']\nGot: ['a', 'aa', 'aaa']\n\nInput: [['school', 'AI', 'asdf', 'b']]\nExpected: ['AI', 'asdf', 'school']\nGot: ['b', 'AI', 'asdf', 'school']\n\nInput: [['d', 'b', 'c', 'a']]\nExpected: []\nGot: ['a', 'b', 'c', 'd']\n\nInput: [['d', 'dcba', 'abcd', 'a']]\nExpected: ['abcd', 'dcba']\nGot: ['a', 'd', 'abcd', 'dcba']\n\nInput: [['a', 'b', 'b', 'c', 'c', 'a']]\nExpected: []\nGot: ['a', 'a', 'b', 'b', 'c', 'c']"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/150",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef x_or_y(n, x, y):\n    import math\n    if math.isqrt(n) ** 2 == n:\n        return x\n    else:\n        return y\n```",
+          "extracted_code": "def x_or_y(n, x, y):\n    import math\n    if math.isqrt(n) ** 2 == n:\n        return x\n    else:\n        return y",
+          "errors": "Base input test failures:\nInput: [7, 34, 12]\nExpected: 34\nGot: 12\n\nInput: [3, 33, 5212]\nExpected: 33\nGot: 5212\n\nInput: [1259, 3, 52]\nExpected: 3\nGot: 52\n\nInput: [7919, -1, 12]\nExpected: -1\nGot: 12\n\nInput: [1, 2, 0]\nExpected: 0\nGot: 2\n\nInput: [2, 2, 0]\nExpected: 2\nGot: 0"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/151",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def double_the_difference(lst):\n    return sum(x * x for x in lst if x > 0 and x % 2 == 1)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/152",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def compare(game, guess):\n    return [abs(g - s) for g, s in zip(game, guess)]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/153",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef Strongest_Extension(class_name, extensions):\n    strongest = None\n    max_strength = -float('inf')\n    for ext in extensions:\n        cap = sum(1 for c in ext if c.isupper())\n        sm = sum(1 for c in ext if c.islower())\n        strength = cap - sm\n        if strength > max_strength or (strength == max_strength and ext < strongest):\n            max_strength = strength\n            strongest = ext\n    return f\"{class_name}.{strongest}\"\n```",
+          "extracted_code": "def Strongest_Extension(class_name, extensions):\n    strongest = None\n    max_strength = -float('inf')\n    for ext in extensions:\n        cap = sum(1 for c in ext if c.isupper())\n        sm = sum(1 for c in ext if c.islower())\n        strength = cap - sm\n        if strength > max_strength or (strength == max_strength and ext < strongest):\n            max_strength = strength\n            strongest = ext\n    return f\"{class_name}.{strongest}\"",
+          "errors": "Base input test failures:\nInput: ['__HAHA', ['Tab', '123', '781345', '-_-']]\nExpected: __HAHA.123\nGot: __HAHA.-_-\n\nInput: ['_', ['Bb', '91245']]\nExpected: _.Bb\nGot: _.91245"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/154",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef cycpattern_check(a, b):\n    from itertools import permutations\n    for perm in permutations(b):\n        if str(perm) in a:\n            return True\n    return False\n```",
+          "extracted_code": "def cycpattern_check(a, b):\n    from itertools import permutations\n    for perm in permutations(b):\n        if str(perm) in a:\n            return True\n    return False",
+          "errors": "Base input test failures:\nInput: ['yello', 'ell']\nExpected: True\nGot: False\n\nInput: ['efef', 'fee']\nExpected: True\nGot: False\n\nInput: ['winemtt', 'tinem']\nExpected: True\nGot: False"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/155",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def even_odd_count(num):\n    even = 0\n    odd = 0\n    for digit in str(abs(num)):\n        if int(digit) % 2 == 0:\n            even += 1\n        else:\n            odd += 1\n    return (even, odd)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/156",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def int_to_mini_roman(number):\n    roman = [\n        (1000, 'm'), (900, 'cm'), (500, 'd'), (400, 'cd'),\n        (100, 'c'), (90, 'xc'), (50, 'l'), (40, 'xl'),\n        (10, 'x'), (9, 'ix'), (5, 'v'), (4, 'iv'), (1, 'i')\n    ]\n    res = ''\n    for value, symbol in roman:\n        while number >= value:\n            res += symbol\n            number -= value\n    return res",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/157",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def right_angle_triangle(a, b, c):\n    return (a**2 + b**2 == c**2 or a**2 + c**2 == b**2 or b**2 + c**2 == a**2)",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/158",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def find_max(words):\n    max_chars = 0\n    result = \"\"\n    for word in words:\n        unique_chars = len(set(word))\n        if unique_chars > max_chars or (unique_chars == max_chars and word < result):\n            max_chars = unique_chars\n            result = word\n    return result",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/159",
+      "success": true,
+      "attempts": 0,
+      "final_code": "def eat(number, need, remaining):\n    total = number + min(need, remaining)\n    remaining_after = remaining - min(need, remaining)\n    return [total, remaining_after]",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/160",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef do_algebra(operator, operand):\n    result = operand[0]\n    for i in range(len(operator)):\n        op = operator[i]\n        num = operand[i + 1]\n        if op == '+':\n            result += num\n        elif op == '-':\n            result -= num\n        elif op == '*':\n            result *= num\n        elif op == '//':\n            result //= num\n        elif op == '**':\n            result **= num\n    return result\n```",
+          "extracted_code": "def do_algebra(operator, operand):\n    result = operand[0]\n    for i in range(len(operator)):\n        op = operator[i]\n        num = operand[i + 1]\n        if op == '+':\n            result += num\n        elif op == '-':\n            result -= num\n        elif op == '*':\n            result *= num\n        elif op == '//':\n            result //= num\n        elif op == '**':\n            result **= num\n    return result",
+          "errors": "Base input test failures:\nInput: [['+', '*', '-'], [2, 3, 4, 5]]\nExpected: 9\nGot: 15"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/161",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef solve(s):\n    result = []\n    for char in s:\n        if char.isalpha():\n            result.append(char.swapcase())\n        else:\n            result.append(char)\n    return ''.join(result)\n```",
+          "extracted_code": "def solve(s):\n    result = []\n    for char in s:\n        if char.isalpha():\n            result.append(char.swapcase())\n        else:\n            result.append(char)\n    return ''.join(result)",
+          "errors": "Base input test failures:\nInput: ['1234']\nExpected: 4321\nGot: 1234\n\nInput: ['#6@2']\nExpected: 2@6#\nGot: #6@2"
+        }
+      ]
+    },
+    {
+      "task_id": "HumanEval/162",
+      "success": true,
+      "attempts": 0,
+      "final_code": "import hashlib\n\ndef string_to_md5(text):\n    if not text:\n        return None\n    return hashlib.md5(text.encode()).hexdigest()",
+      "history": []
+    },
+    {
+      "task_id": "HumanEval/163",
+      "success": false,
+      "attempts": 1,
+      "final_code": null,
+      "history": [
+        {
+          "attempt": 0,
+          "raw_output": "<think>\n</think>\n\n```python\ndef generate_integers(a, b):\n    result = []\n    for num in range(a, b + 1):\n        for digit in str(num):\n            if int(digit) % 2 == 0:\n                result.append(int(digit))\n    return result\n```",
+          "extracted_code": "def generate_integers(a, b):\n    result = []\n    for num in range(a, b + 1):\n        for digit in str(num):\n            if int(digit) % 2 == 0:\n                result.append(int(digit))\n    return result",
+          "errors": "Base input test failures:\nInput: [2, 10]\nExpected: [2, 4, 6, 8]\nGot: [2, 4, 6, 8, 0]\n\nInput: [10, 2]\nExpected: [2, 4, 6, 8]\nGot: []\n\nInput: [132, 2]\nExpected: [2, 4, 6, 8]\nGot: []\n\nInput: [17, 89]\nExpected: []\nGot: [8, 2, 0, 2, 2, 2, 2, 2, 4, 2, 2, 6, 2, 2, 8, 2, 0, 2, 4, 6, 8, 4, 0, 4, 4, 2, 4, 4, 4, 4, 4, 6, 4, 4, 8, 4, 0, 2, 4, 6, 8, 6, 0, 6, 6, 2, 6, 6, 4, 6, 6, 6, 6, 6, 8, 6, 0, 2, 4, 6, 8, 8, 0, 8, 8, 2, 8, 8, 4, 8, 8, 6, 8, 8, 8, 8]"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_tasks": 164,
+    "solved": 88,
+    "failed": 76,
+    "success_rate": 0.5365853658536586
+  },
+  "end_time": "2025-05-13T18:47:36.648755"
+}
